@@ -69,6 +69,7 @@ export function Header() {
   const isActive = (prefix: string) => pathname === prefix || pathname.startsWith(prefix + "/");
 
   return (
+    <>
     <header
       className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur"
       onKeyDown={(e) => {
