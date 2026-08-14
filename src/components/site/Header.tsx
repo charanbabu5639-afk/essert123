@@ -82,7 +82,7 @@ export function Header() {
             <Link to="/" aria-label="Essert home" className="shrink-0">
               <Logo />
             </Link>
-            <span className="hidden border-l border-border pl-4 text-xs leading-tight text-muted-foreground xl:block">
+            <span className="hidden border-l border-border pl-4 text-xs leading-tight text-muted-foreground 2xl:block">
               ZHC — Zero Human Coding™
               <br />
               Autonomous software production
