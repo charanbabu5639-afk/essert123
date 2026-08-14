@@ -10,33 +10,157 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
+import { Route as PlatformIndexRouteImport } from './routes/platform.index'
+import { Route as PlatformAdoptRouteImport } from './routes/platform.adopt'
+import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
+import { Route as PlatformMadamRouteImport } from './routes/platform.madam'
+import { Route as TrustIndexRouteImport } from './routes/trust.index'
+import { Route as TrustDeploymentArchitectureRouteImport } from './routes/trust.deployment-architecture'
+import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.security-architecture'
+import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
+  id: '/what-we-build',
+  path: '/what-we-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformAdoptRoute = PlatformAdoptRouteImport.update({
+  id: '/platform/adopt',
+  path: '/platform/adopt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformHowItWorksRoute = PlatformHowItWorksRouteImport.update({
+  id: '/platform/how-it-works',
+  path: '/platform/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformMadamRoute = PlatformMadamRouteImport.update({
+  id: '/platform/madam',
+  path: '/platform/madam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustIndexRoute = TrustIndexRouteImport.update({
+  id: '/trust/',
+  path: '/trust/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustDeploymentArchitectureRoute =
+  TrustDeploymentArchitectureRouteImport.update({
+    id: '/trust/deployment-architecture',
+    path: '/trust/deployment-architecture',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TrustSecurityArchitectureRoute =
+  TrustSecurityArchitectureRouteImport.update({
+    id: '/trust/security-architecture',
+    path: '/trust/security-architecture',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TrustSovereignDeploymentRoute =
+  TrustSovereignDeploymentRouteImport.update({
+    id: '/trust/sovereign-deployment',
+    path: '/trust/sovereign-deployment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/what-we-build': typeof WhatWeBuildRoute
+  '/platform/adopt': typeof PlatformAdoptRoute
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/madam': typeof PlatformMadamRoute
+  '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
+  '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/platform/': typeof PlatformIndexRoute
+  '/trust/': typeof TrustIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/what-we-build': typeof WhatWeBuildRoute
+  '/platform/adopt': typeof PlatformAdoptRoute
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/madam': typeof PlatformMadamRoute
+  '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
+  '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/platform': typeof PlatformIndexRoute
+  '/trust': typeof TrustIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/what-we-build': typeof WhatWeBuildRoute
+  '/platform/adopt': typeof PlatformAdoptRoute
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/madam': typeof PlatformMadamRoute
+  '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
+  '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/platform/': typeof PlatformIndexRoute
+  '/trust/': typeof TrustIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/what-we-build'
+    | '/platform/adopt'
+    | '/platform/how-it-works'
+    | '/platform/madam'
+    | '/trust/deployment-architecture'
+    | '/trust/security-architecture'
+    | '/trust/sovereign-deployment'
+    | '/platform/'
+    | '/trust/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/what-we-build'
+    | '/platform/adopt'
+    | '/platform/how-it-works'
+    | '/platform/madam'
+    | '/trust/deployment-architecture'
+    | '/trust/security-architecture'
+    | '/trust/sovereign-deployment'
+    | '/platform'
+    | '/trust'
+  id:
+    | '__root__'
+    | '/'
+    | '/what-we-build'
+    | '/platform/adopt'
+    | '/platform/how-it-works'
+    | '/platform/madam'
+    | '/trust/deployment-architecture'
+    | '/trust/security-architecture'
+    | '/trust/sovereign-deployment'
+    | '/platform/'
+    | '/trust/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  WhatWeBuildRoute: typeof WhatWeBuildRoute
+  PlatformAdoptRoute: typeof PlatformAdoptRoute
+  PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
+  PlatformMadamRoute: typeof PlatformMadamRoute
+  TrustDeploymentArchitectureRoute: typeof TrustDeploymentArchitectureRoute
+  TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
+  TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
+  TrustIndexRoute: typeof TrustIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +172,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-build': {
+      id: '/what-we-build'
+      path: '/what-we-build'
+      fullPath: '/what-we-build'
+      preLoaderRoute: typeof WhatWeBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/adopt': {
+      id: '/platform/adopt'
+      path: '/platform/adopt'
+      fullPath: '/platform/adopt'
+      preLoaderRoute: typeof PlatformAdoptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/how-it-works': {
+      id: '/platform/how-it-works'
+      path: '/platform/how-it-works'
+      fullPath: '/platform/how-it-works'
+      preLoaderRoute: typeof PlatformHowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/madam': {
+      id: '/platform/madam'
+      path: '/platform/madam'
+      fullPath: '/platform/madam'
+      preLoaderRoute: typeof PlatformMadamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/': {
+      id: '/trust/'
+      path: '/trust'
+      fullPath: '/trust/'
+      preLoaderRoute: typeof TrustIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/deployment-architecture': {
+      id: '/trust/deployment-architecture'
+      path: '/trust/deployment-architecture'
+      fullPath: '/trust/deployment-architecture'
+      preLoaderRoute: typeof TrustDeploymentArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/security-architecture': {
+      id: '/trust/security-architecture'
+      path: '/trust/security-architecture'
+      fullPath: '/trust/security-architecture'
+      preLoaderRoute: typeof TrustSecurityArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/sovereign-deployment': {
+      id: '/trust/sovereign-deployment'
+      path: '/trust/sovereign-deployment'
+      fullPath: '/trust/sovereign-deployment'
+      preLoaderRoute: typeof TrustSovereignDeploymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  WhatWeBuildRoute: WhatWeBuildRoute,
+  PlatformAdoptRoute: PlatformAdoptRoute,
+  PlatformHowItWorksRoute: PlatformHowItWorksRoute,
+  PlatformMadamRoute: PlatformMadamRoute,
+  TrustDeploymentArchitectureRoute: TrustDeploymentArchitectureRoute,
+  TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
+  TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
+  TrustIndexRoute: TrustIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
