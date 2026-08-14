@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
+import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
+import { Route as CybergrcContactSalesRouteImport } from './routes/cybergrc.contact-sales'
+import { Route as CybergrcHowItWorksRouteImport } from './routes/cybergrc.how-it-works'
 import { Route as OutcomesIndexRouteImport } from './routes/outcomes.index'
 import { Route as OutcomesStorySlugRouteImport } from './routes/outcomes.$storySlug'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
@@ -24,6 +27,8 @@ import { Route as TrustDeploymentArchitectureRouteImport } from './routes/trust.
 import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.security-architecture'
 import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
 import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
+import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
+import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -33,6 +38,21 @@ const IndexRoute = IndexRouteImport.update({
 const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
   id: '/what-we-build',
   path: '/what-we-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybergrcIndexRoute = CybergrcIndexRouteImport.update({
+  id: '/cybergrc/',
+  path: '/cybergrc/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybergrcContactSalesRoute = CybergrcContactSalesRouteImport.update({
+  id: '/cybergrc/contact-sales',
+  path: '/cybergrc/contact-sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybergrcHowItWorksRoute = CybergrcHowItWorksRouteImport.update({
+  id: '/cybergrc/how-it-works',
+  path: '/cybergrc/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OutcomesIndexRoute = OutcomesIndexRouteImport.update({
@@ -103,10 +123,24 @@ const TrustSovereignDeploymentRoute =
     path: '/trust/sovereign-deployment',
     getParentRoute: () => rootRouteImport,
   } as any)
+const CybergrcApplicationsIndexRoute =
+  CybergrcApplicationsIndexRouteImport.update({
+    id: '/cybergrc/applications/',
+    path: '/cybergrc/applications/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CybergrcApplicationsApplicationSlugRoute =
+  CybergrcApplicationsApplicationSlugRouteImport.update({
+    id: '/cybergrc/applications/$applicationSlug',
+    path: '/cybergrc/applications/$applicationSlug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/what-we-build': typeof WhatWeBuildRoute
+  '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
+  '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -117,13 +151,18 @@ export interface FileRoutesByFullPath {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/cybergrc/': typeof CybergrcIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
+  '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/what-we-build': typeof WhatWeBuildRoute
+  '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
+  '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -134,14 +173,19 @@ export interface FileRoutesByTo {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/cybergrc': typeof CybergrcIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
   '/trust': typeof TrustIndexRoute
+  '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/applications': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/what-we-build': typeof WhatWeBuildRoute
+  '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
+  '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -152,15 +196,20 @@ export interface FileRoutesById {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/cybergrc/': typeof CybergrcIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
+  '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/what-we-build'
+    | '/cybergrc/contact-sales'
+    | '/cybergrc/how-it-works'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -171,13 +220,18 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/cybergrc/'
     | '/outcomes/'
     | '/platform/'
     | '/trust/'
+    | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/applications/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/what-we-build'
+    | '/cybergrc/contact-sales'
+    | '/cybergrc/how-it-works'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -188,13 +242,18 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/cybergrc'
     | '/outcomes'
     | '/platform'
     | '/trust'
+    | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/applications'
   id:
     | '__root__'
     | '/'
     | '/what-we-build'
+    | '/cybergrc/contact-sales'
+    | '/cybergrc/how-it-works'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -205,14 +264,19 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/cybergrc/'
     | '/outcomes/'
     | '/platform/'
     | '/trust/'
+    | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/applications/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WhatWeBuildRoute: typeof WhatWeBuildRoute
+  CybergrcContactSalesRoute: typeof CybergrcContactSalesRoute
+  CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
   OutcomesStorySlugRoute: typeof OutcomesStorySlugRoute
   PlatformAdoptRoute: typeof PlatformAdoptRoute
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
@@ -223,9 +287,12 @@ export interface RootRouteChildren {
   TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
   TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
+  CybergrcIndexRoute: typeof CybergrcIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
+  CybergrcApplicationsApplicationSlugRoute: typeof CybergrcApplicationsApplicationSlugRoute
+  CybergrcApplicationsIndexRoute: typeof CybergrcApplicationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -242,6 +309,27 @@ declare module '@tanstack/react-router' {
       path: '/what-we-build'
       fullPath: '/what-we-build'
       preLoaderRoute: typeof WhatWeBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/': {
+      id: '/cybergrc/'
+      path: '/cybergrc'
+      fullPath: '/cybergrc/'
+      preLoaderRoute: typeof CybergrcIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/contact-sales': {
+      id: '/cybergrc/contact-sales'
+      path: '/cybergrc/contact-sales'
+      fullPath: '/cybergrc/contact-sales'
+      preLoaderRoute: typeof CybergrcContactSalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/how-it-works': {
+      id: '/cybergrc/how-it-works'
+      path: '/cybergrc/how-it-works'
+      fullPath: '/cybergrc/how-it-works'
+      preLoaderRoute: typeof CybergrcHowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/outcomes/': {
@@ -335,12 +423,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrustSovereignDeploymentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cybergrc/applications/': {
+      id: '/cybergrc/applications/'
+      path: '/cybergrc/applications'
+      fullPath: '/cybergrc/applications/'
+      preLoaderRoute: typeof CybergrcApplicationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/applications/$applicationSlug': {
+      id: '/cybergrc/applications/$applicationSlug'
+      path: '/cybergrc/applications/$applicationSlug'
+      fullPath: '/cybergrc/applications/$applicationSlug'
+      preLoaderRoute: typeof CybergrcApplicationsApplicationSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WhatWeBuildRoute: WhatWeBuildRoute,
+  CybergrcContactSalesRoute: CybergrcContactSalesRoute,
+  CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
   OutcomesStorySlugRoute: OutcomesStorySlugRoute,
   PlatformAdoptRoute: PlatformAdoptRoute,
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
@@ -351,9 +455,13 @@ const rootRouteChildren: RootRouteChildren = {
   TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
   TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
+  CybergrcIndexRoute: CybergrcIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
+  CybergrcApplicationsApplicationSlugRoute:
+    CybergrcApplicationsApplicationSlugRoute,
+  CybergrcApplicationsIndexRoute: CybergrcApplicationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
