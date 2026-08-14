@@ -7,7 +7,7 @@ export function Logo({ tone = "default" }: { tone?: "default" | "ink" }) {
     <img
       src={logoAsset.url}
       alt="Essert"
-      className={cn("h-9 w-auto", tone === "ink" && "invert")}
+      className={cn("h-7 w-auto", tone === "ink" && "invert")}
     />
   );
 }
