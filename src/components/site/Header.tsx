@@ -172,6 +172,7 @@ export function Header() {
           </div>
         </div>
       ) : null}
+    </header>
 
       {mobileOpen ? (
         <div className="fixed inset-x-0 bottom-0 top-[76px] z-50 flex flex-col bg-background lg:hidden">
