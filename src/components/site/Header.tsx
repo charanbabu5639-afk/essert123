@@ -105,7 +105,7 @@ export function Header() {
                       to={item.to}
                       onFocus={() => setOpenMenu(item.columns ? item.label : null)}
                       className={cn(
-                        "border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
+                        "whitespace-nowrap border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
                         isActive(item.matchPrefix)
                           ? "border-foreground text-foreground"
                           : "border-transparent text-foreground/75 hover:text-foreground",
@@ -144,7 +144,7 @@ export function Header() {
             >
               Login
             </a>
-            <CtaLink to={cta.to} className="hidden px-4 py-2.5 lg:inline-flex">
+            <CtaLink to={cta.to} className="hidden whitespace-nowrap px-4 py-2.5 lg:inline-flex">
               {cta.label}
             </CtaLink>
             <button
