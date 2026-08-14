@@ -10,33 +10,383 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompanyRouteImport } from './routes/company'
+import { Route as ExecutiveBriefingRouteImport } from './routes/executive-briefing'
+import { Route as LoginPlaceholderRouteImport } from './routes/login-placeholder'
+import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
+import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
+import { Route as CybergrcContactSalesRouteImport } from './routes/cybergrc.contact-sales'
+import { Route as CybergrcHowItWorksRouteImport } from './routes/cybergrc.how-it-works'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as InsightsAgenticGovernanceRouteImport } from './routes/insights.agentic-governance'
+import { Route as InsightsAutonomousSoftwareProductionRouteImport } from './routes/insights.autonomous-software-production'
+import { Route as InsightsEnterpriseSovereigntyRouteImport } from './routes/insights.enterprise-sovereignty'
+import { Route as OutcomesIndexRouteImport } from './routes/outcomes.index'
+import { Route as OutcomesStorySlugRouteImport } from './routes/outcomes.$storySlug'
+import { Route as PlatformIndexRouteImport } from './routes/platform.index'
+import { Route as PlatformAdoptRouteImport } from './routes/platform.adopt'
+import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
+import { Route as PlatformMadamRouteImport } from './routes/platform.madam'
+import { Route as TrustIndexRouteImport } from './routes/trust.index'
+import { Route as TrustCodeOwnershipRouteImport } from './routes/trust.code-ownership'
+import { Route as TrustDataResidencyRouteImport } from './routes/trust.data-residency'
+import { Route as TrustDeploymentArchitectureRouteImport } from './routes/trust.deployment-architecture'
+import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.security-architecture'
+import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
+import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
+import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
+import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompanyRoute = CompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExecutiveBriefingRoute = ExecutiveBriefingRouteImport.update({
+  id: '/executive-briefing',
+  path: '/executive-briefing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginPlaceholderRoute = LoginPlaceholderRouteImport.update({
+  id: '/login-placeholder',
+  path: '/login-placeholder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
+  id: '/what-we-build',
+  path: '/what-we-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybergrcIndexRoute = CybergrcIndexRouteImport.update({
+  id: '/cybergrc/',
+  path: '/cybergrc/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybergrcContactSalesRoute = CybergrcContactSalesRouteImport.update({
+  id: '/cybergrc/contact-sales',
+  path: '/cybergrc/contact-sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybergrcHowItWorksRoute = CybergrcHowItWorksRouteImport.update({
+  id: '/cybergrc/how-it-works',
+  path: '/cybergrc/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/insights/',
+  path: '/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsAgenticGovernanceRoute =
+  InsightsAgenticGovernanceRouteImport.update({
+    id: '/insights/agentic-governance',
+    path: '/insights/agentic-governance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InsightsAutonomousSoftwareProductionRoute =
+  InsightsAutonomousSoftwareProductionRouteImport.update({
+    id: '/insights/autonomous-software-production',
+    path: '/insights/autonomous-software-production',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InsightsEnterpriseSovereigntyRoute =
+  InsightsEnterpriseSovereigntyRouteImport.update({
+    id: '/insights/enterprise-sovereignty',
+    path: '/insights/enterprise-sovereignty',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OutcomesIndexRoute = OutcomesIndexRouteImport.update({
+  id: '/outcomes/',
+  path: '/outcomes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutcomesStorySlugRoute = OutcomesStorySlugRouteImport.update({
+  id: '/outcomes/$storySlug',
+  path: '/outcomes/$storySlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformAdoptRoute = PlatformAdoptRouteImport.update({
+  id: '/platform/adopt',
+  path: '/platform/adopt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformHowItWorksRoute = PlatformHowItWorksRouteImport.update({
+  id: '/platform/how-it-works',
+  path: '/platform/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformMadamRoute = PlatformMadamRouteImport.update({
+  id: '/platform/madam',
+  path: '/platform/madam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustIndexRoute = TrustIndexRouteImport.update({
+  id: '/trust/',
+  path: '/trust/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustCodeOwnershipRoute = TrustCodeOwnershipRouteImport.update({
+  id: '/trust/code-ownership',
+  path: '/trust/code-ownership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustDataResidencyRoute = TrustDataResidencyRouteImport.update({
+  id: '/trust/data-residency',
+  path: '/trust/data-residency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustDeploymentArchitectureRoute =
+  TrustDeploymentArchitectureRouteImport.update({
+    id: '/trust/deployment-architecture',
+    path: '/trust/deployment-architecture',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TrustSecurityArchitectureRoute =
+  TrustSecurityArchitectureRouteImport.update({
+    id: '/trust/security-architecture',
+    path: '/trust/security-architecture',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TrustSecurityOverviewRoute = TrustSecurityOverviewRouteImport.update({
+  id: '/trust/security-overview',
+  path: '/trust/security-overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustSovereignDeploymentRoute =
+  TrustSovereignDeploymentRouteImport.update({
+    id: '/trust/sovereign-deployment',
+    path: '/trust/sovereign-deployment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CybergrcApplicationsIndexRoute =
+  CybergrcApplicationsIndexRouteImport.update({
+    id: '/cybergrc/applications/',
+    path: '/cybergrc/applications/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CybergrcApplicationsApplicationSlugRoute =
+  CybergrcApplicationsApplicationSlugRouteImport.update({
+    id: '/cybergrc/applications/$applicationSlug',
+    path: '/cybergrc/applications/$applicationSlug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/company': typeof CompanyRoute
+  '/executive-briefing': typeof ExecutiveBriefingRoute
+  '/login-placeholder': typeof LoginPlaceholderRoute
+  '/what-we-build': typeof WhatWeBuildRoute
+  '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
+  '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
+  '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
+  '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
+  '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
+  '/platform/adopt': typeof PlatformAdoptRoute
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/madam': typeof PlatformMadamRoute
+  '/trust/code-ownership': typeof TrustCodeOwnershipRoute
+  '/trust/data-residency': typeof TrustDataResidencyRoute
+  '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
+  '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/security-overview': typeof TrustSecurityOverviewRoute
+  '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/cybergrc/': typeof CybergrcIndexRoute
+  '/insights/': typeof InsightsIndexRoute
+  '/outcomes/': typeof OutcomesIndexRoute
+  '/platform/': typeof PlatformIndexRoute
+  '/trust/': typeof TrustIndexRoute
+  '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/company': typeof CompanyRoute
+  '/executive-briefing': typeof ExecutiveBriefingRoute
+  '/login-placeholder': typeof LoginPlaceholderRoute
+  '/what-we-build': typeof WhatWeBuildRoute
+  '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
+  '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
+  '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
+  '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
+  '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
+  '/platform/adopt': typeof PlatformAdoptRoute
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/madam': typeof PlatformMadamRoute
+  '/trust/code-ownership': typeof TrustCodeOwnershipRoute
+  '/trust/data-residency': typeof TrustDataResidencyRoute
+  '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
+  '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/security-overview': typeof TrustSecurityOverviewRoute
+  '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/cybergrc': typeof CybergrcIndexRoute
+  '/insights': typeof InsightsIndexRoute
+  '/outcomes': typeof OutcomesIndexRoute
+  '/platform': typeof PlatformIndexRoute
+  '/trust': typeof TrustIndexRoute
+  '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/applications': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/company': typeof CompanyRoute
+  '/executive-briefing': typeof ExecutiveBriefingRoute
+  '/login-placeholder': typeof LoginPlaceholderRoute
+  '/what-we-build': typeof WhatWeBuildRoute
+  '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
+  '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
+  '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
+  '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
+  '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
+  '/platform/adopt': typeof PlatformAdoptRoute
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/madam': typeof PlatformMadamRoute
+  '/trust/code-ownership': typeof TrustCodeOwnershipRoute
+  '/trust/data-residency': typeof TrustDataResidencyRoute
+  '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
+  '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/security-overview': typeof TrustSecurityOverviewRoute
+  '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/cybergrc/': typeof CybergrcIndexRoute
+  '/insights/': typeof InsightsIndexRoute
+  '/outcomes/': typeof OutcomesIndexRoute
+  '/platform/': typeof PlatformIndexRoute
+  '/trust/': typeof TrustIndexRoute
+  '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/company'
+    | '/executive-briefing'
+    | '/login-placeholder'
+    | '/what-we-build'
+    | '/cybergrc/contact-sales'
+    | '/cybergrc/how-it-works'
+    | '/insights/agentic-governance'
+    | '/insights/autonomous-software-production'
+    | '/insights/enterprise-sovereignty'
+    | '/outcomes/$storySlug'
+    | '/platform/adopt'
+    | '/platform/how-it-works'
+    | '/platform/madam'
+    | '/trust/code-ownership'
+    | '/trust/data-residency'
+    | '/trust/deployment-architecture'
+    | '/trust/security-architecture'
+    | '/trust/security-overview'
+    | '/trust/sovereign-deployment'
+    | '/cybergrc/'
+    | '/insights/'
+    | '/outcomes/'
+    | '/platform/'
+    | '/trust/'
+    | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/applications/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/company'
+    | '/executive-briefing'
+    | '/login-placeholder'
+    | '/what-we-build'
+    | '/cybergrc/contact-sales'
+    | '/cybergrc/how-it-works'
+    | '/insights/agentic-governance'
+    | '/insights/autonomous-software-production'
+    | '/insights/enterprise-sovereignty'
+    | '/outcomes/$storySlug'
+    | '/platform/adopt'
+    | '/platform/how-it-works'
+    | '/platform/madam'
+    | '/trust/code-ownership'
+    | '/trust/data-residency'
+    | '/trust/deployment-architecture'
+    | '/trust/security-architecture'
+    | '/trust/security-overview'
+    | '/trust/sovereign-deployment'
+    | '/cybergrc'
+    | '/insights'
+    | '/outcomes'
+    | '/platform'
+    | '/trust'
+    | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/applications'
+  id:
+    | '__root__'
+    | '/'
+    | '/company'
+    | '/executive-briefing'
+    | '/login-placeholder'
+    | '/what-we-build'
+    | '/cybergrc/contact-sales'
+    | '/cybergrc/how-it-works'
+    | '/insights/agentic-governance'
+    | '/insights/autonomous-software-production'
+    | '/insights/enterprise-sovereignty'
+    | '/outcomes/$storySlug'
+    | '/platform/adopt'
+    | '/platform/how-it-works'
+    | '/platform/madam'
+    | '/trust/code-ownership'
+    | '/trust/data-residency'
+    | '/trust/deployment-architecture'
+    | '/trust/security-architecture'
+    | '/trust/security-overview'
+    | '/trust/sovereign-deployment'
+    | '/cybergrc/'
+    | '/insights/'
+    | '/outcomes/'
+    | '/platform/'
+    | '/trust/'
+    | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/applications/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompanyRoute: typeof CompanyRoute
+  ExecutiveBriefingRoute: typeof ExecutiveBriefingRoute
+  LoginPlaceholderRoute: typeof LoginPlaceholderRoute
+  WhatWeBuildRoute: typeof WhatWeBuildRoute
+  CybergrcContactSalesRoute: typeof CybergrcContactSalesRoute
+  CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
+  InsightsAgenticGovernanceRoute: typeof InsightsAgenticGovernanceRoute
+  InsightsAutonomousSoftwareProductionRoute: typeof InsightsAutonomousSoftwareProductionRoute
+  InsightsEnterpriseSovereigntyRoute: typeof InsightsEnterpriseSovereigntyRoute
+  OutcomesStorySlugRoute: typeof OutcomesStorySlugRoute
+  PlatformAdoptRoute: typeof PlatformAdoptRoute
+  PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
+  PlatformMadamRoute: typeof PlatformMadamRoute
+  TrustCodeOwnershipRoute: typeof TrustCodeOwnershipRoute
+  TrustDataResidencyRoute: typeof TrustDataResidencyRoute
+  TrustDeploymentArchitectureRoute: typeof TrustDeploymentArchitectureRoute
+  TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
+  TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
+  TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
+  CybergrcIndexRoute: typeof CybergrcIndexRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
+  OutcomesIndexRoute: typeof OutcomesIndexRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
+  TrustIndexRoute: typeof TrustIndexRoute
+  CybergrcApplicationsApplicationSlugRoute: typeof CybergrcApplicationsApplicationSlugRoute
+  CybergrcApplicationsIndexRoute: typeof CybergrcApplicationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +398,221 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/executive-briefing': {
+      id: '/executive-briefing'
+      path: '/executive-briefing'
+      fullPath: '/executive-briefing'
+      preLoaderRoute: typeof ExecutiveBriefingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login-placeholder': {
+      id: '/login-placeholder'
+      path: '/login-placeholder'
+      fullPath: '/login-placeholder'
+      preLoaderRoute: typeof LoginPlaceholderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-build': {
+      id: '/what-we-build'
+      path: '/what-we-build'
+      fullPath: '/what-we-build'
+      preLoaderRoute: typeof WhatWeBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/': {
+      id: '/cybergrc/'
+      path: '/cybergrc'
+      fullPath: '/cybergrc/'
+      preLoaderRoute: typeof CybergrcIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/contact-sales': {
+      id: '/cybergrc/contact-sales'
+      path: '/cybergrc/contact-sales'
+      fullPath: '/cybergrc/contact-sales'
+      preLoaderRoute: typeof CybergrcContactSalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/how-it-works': {
+      id: '/cybergrc/how-it-works'
+      path: '/cybergrc/how-it-works'
+      fullPath: '/cybergrc/how-it-works'
+      preLoaderRoute: typeof CybergrcHowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/': {
+      id: '/insights/'
+      path: '/insights'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/agentic-governance': {
+      id: '/insights/agentic-governance'
+      path: '/insights/agentic-governance'
+      fullPath: '/insights/agentic-governance'
+      preLoaderRoute: typeof InsightsAgenticGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/autonomous-software-production': {
+      id: '/insights/autonomous-software-production'
+      path: '/insights/autonomous-software-production'
+      fullPath: '/insights/autonomous-software-production'
+      preLoaderRoute: typeof InsightsAutonomousSoftwareProductionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/enterprise-sovereignty': {
+      id: '/insights/enterprise-sovereignty'
+      path: '/insights/enterprise-sovereignty'
+      fullPath: '/insights/enterprise-sovereignty'
+      preLoaderRoute: typeof InsightsEnterpriseSovereigntyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outcomes/': {
+      id: '/outcomes/'
+      path: '/outcomes'
+      fullPath: '/outcomes/'
+      preLoaderRoute: typeof OutcomesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outcomes/$storySlug': {
+      id: '/outcomes/$storySlug'
+      path: '/outcomes/$storySlug'
+      fullPath: '/outcomes/$storySlug'
+      preLoaderRoute: typeof OutcomesStorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/adopt': {
+      id: '/platform/adopt'
+      path: '/platform/adopt'
+      fullPath: '/platform/adopt'
+      preLoaderRoute: typeof PlatformAdoptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/how-it-works': {
+      id: '/platform/how-it-works'
+      path: '/platform/how-it-works'
+      fullPath: '/platform/how-it-works'
+      preLoaderRoute: typeof PlatformHowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/madam': {
+      id: '/platform/madam'
+      path: '/platform/madam'
+      fullPath: '/platform/madam'
+      preLoaderRoute: typeof PlatformMadamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/': {
+      id: '/trust/'
+      path: '/trust'
+      fullPath: '/trust/'
+      preLoaderRoute: typeof TrustIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/code-ownership': {
+      id: '/trust/code-ownership'
+      path: '/trust/code-ownership'
+      fullPath: '/trust/code-ownership'
+      preLoaderRoute: typeof TrustCodeOwnershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/data-residency': {
+      id: '/trust/data-residency'
+      path: '/trust/data-residency'
+      fullPath: '/trust/data-residency'
+      preLoaderRoute: typeof TrustDataResidencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/deployment-architecture': {
+      id: '/trust/deployment-architecture'
+      path: '/trust/deployment-architecture'
+      fullPath: '/trust/deployment-architecture'
+      preLoaderRoute: typeof TrustDeploymentArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/security-architecture': {
+      id: '/trust/security-architecture'
+      path: '/trust/security-architecture'
+      fullPath: '/trust/security-architecture'
+      preLoaderRoute: typeof TrustSecurityArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/security-overview': {
+      id: '/trust/security-overview'
+      path: '/trust/security-overview'
+      fullPath: '/trust/security-overview'
+      preLoaderRoute: typeof TrustSecurityOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/sovereign-deployment': {
+      id: '/trust/sovereign-deployment'
+      path: '/trust/sovereign-deployment'
+      fullPath: '/trust/sovereign-deployment'
+      preLoaderRoute: typeof TrustSovereignDeploymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/applications/': {
+      id: '/cybergrc/applications/'
+      path: '/cybergrc/applications'
+      fullPath: '/cybergrc/applications/'
+      preLoaderRoute: typeof CybergrcApplicationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybergrc/applications/$applicationSlug': {
+      id: '/cybergrc/applications/$applicationSlug'
+      path: '/cybergrc/applications/$applicationSlug'
+      fullPath: '/cybergrc/applications/$applicationSlug'
+      preLoaderRoute: typeof CybergrcApplicationsApplicationSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompanyRoute: CompanyRoute,
+  ExecutiveBriefingRoute: ExecutiveBriefingRoute,
+  LoginPlaceholderRoute: LoginPlaceholderRoute,
+  WhatWeBuildRoute: WhatWeBuildRoute,
+  CybergrcContactSalesRoute: CybergrcContactSalesRoute,
+  CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
+  InsightsAgenticGovernanceRoute: InsightsAgenticGovernanceRoute,
+  InsightsAutonomousSoftwareProductionRoute:
+    InsightsAutonomousSoftwareProductionRoute,
+  InsightsEnterpriseSovereigntyRoute: InsightsEnterpriseSovereigntyRoute,
+  OutcomesStorySlugRoute: OutcomesStorySlugRoute,
+  PlatformAdoptRoute: PlatformAdoptRoute,
+  PlatformHowItWorksRoute: PlatformHowItWorksRoute,
+  PlatformMadamRoute: PlatformMadamRoute,
+  TrustCodeOwnershipRoute: TrustCodeOwnershipRoute,
+  TrustDataResidencyRoute: TrustDataResidencyRoute,
+  TrustDeploymentArchitectureRoute: TrustDeploymentArchitectureRoute,
+  TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
+  TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
+  TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
+  CybergrcIndexRoute: CybergrcIndexRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
+  OutcomesIndexRoute: OutcomesIndexRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
+  TrustIndexRoute: TrustIndexRoute,
+  CybergrcApplicationsApplicationSlugRoute:
+    CybergrcApplicationsApplicationSlugRoute,
+  CybergrcApplicationsIndexRoute: CybergrcApplicationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
