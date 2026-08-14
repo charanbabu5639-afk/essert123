@@ -10,10 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompanyRouteImport } from './routes/company'
+import { Route as ExecutiveBriefingRouteImport } from './routes/executive-briefing'
+import { Route as LoginPlaceholderRouteImport } from './routes/login-placeholder'
 import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
 import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
 import { Route as CybergrcContactSalesRouteImport } from './routes/cybergrc.contact-sales'
 import { Route as CybergrcHowItWorksRouteImport } from './routes/cybergrc.how-it-works'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as InsightsAgenticGovernanceRouteImport } from './routes/insights.agentic-governance'
+import { Route as InsightsAutonomousSoftwareProductionRouteImport } from './routes/insights.autonomous-software-production'
+import { Route as InsightsEnterpriseSovereigntyRouteImport } from './routes/insights.enterprise-sovereignty'
 import { Route as OutcomesIndexRouteImport } from './routes/outcomes.index'
 import { Route as OutcomesStorySlugRouteImport } from './routes/outcomes.$storySlug'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
@@ -33,6 +40,21 @@ import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './route
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyRoute = CompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExecutiveBriefingRoute = ExecutiveBriefingRouteImport.update({
+  id: '/executive-briefing',
+  path: '/executive-briefing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginPlaceholderRoute = LoginPlaceholderRouteImport.update({
+  id: '/login-placeholder',
+  path: '/login-placeholder',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
@@ -55,6 +77,29 @@ const CybergrcHowItWorksRoute = CybergrcHowItWorksRouteImport.update({
   path: '/cybergrc/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/insights/',
+  path: '/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsAgenticGovernanceRoute =
+  InsightsAgenticGovernanceRouteImport.update({
+    id: '/insights/agentic-governance',
+    path: '/insights/agentic-governance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InsightsAutonomousSoftwareProductionRoute =
+  InsightsAutonomousSoftwareProductionRouteImport.update({
+    id: '/insights/autonomous-software-production',
+    path: '/insights/autonomous-software-production',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InsightsEnterpriseSovereigntyRoute =
+  InsightsEnterpriseSovereigntyRouteImport.update({
+    id: '/insights/enterprise-sovereignty',
+    path: '/insights/enterprise-sovereignty',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OutcomesIndexRoute = OutcomesIndexRouteImport.update({
   id: '/outcomes/',
   path: '/outcomes/',
@@ -138,9 +183,15 @@ const CybergrcApplicationsApplicationSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/company': typeof CompanyRoute
+  '/executive-briefing': typeof ExecutiveBriefingRoute
+  '/login-placeholder': typeof LoginPlaceholderRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
+  '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
+  '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -152,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
   '/cybergrc/': typeof CybergrcIndexRoute
+  '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
@@ -160,9 +212,15 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/company': typeof CompanyRoute
+  '/executive-briefing': typeof ExecutiveBriefingRoute
+  '/login-placeholder': typeof LoginPlaceholderRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
+  '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
+  '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -174,6 +232,7 @@ export interface FileRoutesByTo {
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
   '/cybergrc': typeof CybergrcIndexRoute
+  '/insights': typeof InsightsIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
   '/trust': typeof TrustIndexRoute
@@ -183,9 +242,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/company': typeof CompanyRoute
+  '/executive-briefing': typeof ExecutiveBriefingRoute
+  '/login-placeholder': typeof LoginPlaceholderRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
+  '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
+  '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -197,6 +262,7 @@ export interface FileRoutesById {
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
   '/cybergrc/': typeof CybergrcIndexRoute
+  '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
@@ -207,9 +273,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/company'
+    | '/executive-briefing'
+    | '/login-placeholder'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
+    | '/insights/agentic-governance'
+    | '/insights/autonomous-software-production'
+    | '/insights/enterprise-sovereignty'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -221,6 +293,7 @@ export interface FileRouteTypes {
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
     | '/cybergrc/'
+    | '/insights/'
     | '/outcomes/'
     | '/platform/'
     | '/trust/'
@@ -229,9 +302,15 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/company'
+    | '/executive-briefing'
+    | '/login-placeholder'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
+    | '/insights/agentic-governance'
+    | '/insights/autonomous-software-production'
+    | '/insights/enterprise-sovereignty'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -243,6 +322,7 @@ export interface FileRouteTypes {
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
     | '/cybergrc'
+    | '/insights'
     | '/outcomes'
     | '/platform'
     | '/trust'
@@ -251,9 +331,15 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/company'
+    | '/executive-briefing'
+    | '/login-placeholder'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
+    | '/insights/agentic-governance'
+    | '/insights/autonomous-software-production'
+    | '/insights/enterprise-sovereignty'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -265,6 +351,7 @@ export interface FileRouteTypes {
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
     | '/cybergrc/'
+    | '/insights/'
     | '/outcomes/'
     | '/platform/'
     | '/trust/'
@@ -274,9 +361,15 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompanyRoute: typeof CompanyRoute
+  ExecutiveBriefingRoute: typeof ExecutiveBriefingRoute
+  LoginPlaceholderRoute: typeof LoginPlaceholderRoute
   WhatWeBuildRoute: typeof WhatWeBuildRoute
   CybergrcContactSalesRoute: typeof CybergrcContactSalesRoute
   CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
+  InsightsAgenticGovernanceRoute: typeof InsightsAgenticGovernanceRoute
+  InsightsAutonomousSoftwareProductionRoute: typeof InsightsAutonomousSoftwareProductionRoute
+  InsightsEnterpriseSovereigntyRoute: typeof InsightsEnterpriseSovereigntyRoute
   OutcomesStorySlugRoute: typeof OutcomesStorySlugRoute
   PlatformAdoptRoute: typeof PlatformAdoptRoute
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
@@ -288,6 +381,7 @@ export interface RootRouteChildren {
   TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
   CybergrcIndexRoute: typeof CybergrcIndexRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
@@ -302,6 +396,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/executive-briefing': {
+      id: '/executive-briefing'
+      path: '/executive-briefing'
+      fullPath: '/executive-briefing'
+      preLoaderRoute: typeof ExecutiveBriefingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login-placeholder': {
+      id: '/login-placeholder'
+      path: '/login-placeholder'
+      fullPath: '/login-placeholder'
+      preLoaderRoute: typeof LoginPlaceholderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/what-we-build': {
@@ -330,6 +445,34 @@ declare module '@tanstack/react-router' {
       path: '/cybergrc/how-it-works'
       fullPath: '/cybergrc/how-it-works'
       preLoaderRoute: typeof CybergrcHowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/': {
+      id: '/insights/'
+      path: '/insights'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/agentic-governance': {
+      id: '/insights/agentic-governance'
+      path: '/insights/agentic-governance'
+      fullPath: '/insights/agentic-governance'
+      preLoaderRoute: typeof InsightsAgenticGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/autonomous-software-production': {
+      id: '/insights/autonomous-software-production'
+      path: '/insights/autonomous-software-production'
+      fullPath: '/insights/autonomous-software-production'
+      preLoaderRoute: typeof InsightsAutonomousSoftwareProductionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/enterprise-sovereignty': {
+      id: '/insights/enterprise-sovereignty'
+      path: '/insights/enterprise-sovereignty'
+      fullPath: '/insights/enterprise-sovereignty'
+      preLoaderRoute: typeof InsightsEnterpriseSovereigntyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/outcomes/': {
@@ -442,9 +585,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompanyRoute: CompanyRoute,
+  ExecutiveBriefingRoute: ExecutiveBriefingRoute,
+  LoginPlaceholderRoute: LoginPlaceholderRoute,
   WhatWeBuildRoute: WhatWeBuildRoute,
   CybergrcContactSalesRoute: CybergrcContactSalesRoute,
   CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
+  InsightsAgenticGovernanceRoute: InsightsAgenticGovernanceRoute,
+  InsightsAutonomousSoftwareProductionRoute:
+    InsightsAutonomousSoftwareProductionRoute,
+  InsightsEnterpriseSovereigntyRoute: InsightsEnterpriseSovereigntyRoute,
   OutcomesStorySlugRoute: OutcomesStorySlugRoute,
   PlatformAdoptRoute: PlatformAdoptRoute,
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
@@ -456,6 +606,7 @@ const rootRouteChildren: RootRouteChildren = {
   TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
   CybergrcIndexRoute: CybergrcIndexRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
