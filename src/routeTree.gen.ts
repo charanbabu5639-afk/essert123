@@ -11,13 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
+import { Route as OutcomesIndexRouteImport } from './routes/outcomes.index'
+import { Route as OutcomesStorySlugRouteImport } from './routes/outcomes.$storySlug'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
 import { Route as PlatformAdoptRouteImport } from './routes/platform.adopt'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
 import { Route as PlatformMadamRouteImport } from './routes/platform.madam'
 import { Route as TrustIndexRouteImport } from './routes/trust.index'
+import { Route as TrustCodeOwnershipRouteImport } from './routes/trust.code-ownership'
+import { Route as TrustDataResidencyRouteImport } from './routes/trust.data-residency'
 import { Route as TrustDeploymentArchitectureRouteImport } from './routes/trust.deployment-architecture'
 import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.security-architecture'
+import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
 import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
 
 const IndexRoute = IndexRouteImport.update({
@@ -28,6 +33,16 @@ const IndexRoute = IndexRouteImport.update({
 const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
   id: '/what-we-build',
   path: '/what-we-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutcomesIndexRoute = OutcomesIndexRouteImport.update({
+  id: '/outcomes/',
+  path: '/outcomes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutcomesStorySlugRoute = OutcomesStorySlugRouteImport.update({
+  id: '/outcomes/$storySlug',
+  path: '/outcomes/$storySlug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlatformIndexRoute = PlatformIndexRouteImport.update({
@@ -55,6 +70,16 @@ const TrustIndexRoute = TrustIndexRouteImport.update({
   path: '/trust/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrustCodeOwnershipRoute = TrustCodeOwnershipRouteImport.update({
+  id: '/trust/code-ownership',
+  path: '/trust/code-ownership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustDataResidencyRoute = TrustDataResidencyRouteImport.update({
+  id: '/trust/data-residency',
+  path: '/trust/data-residency',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrustDeploymentArchitectureRoute =
   TrustDeploymentArchitectureRouteImport.update({
     id: '/trust/deployment-architecture',
@@ -67,6 +92,11 @@ const TrustSecurityArchitectureRoute =
     path: '/trust/security-architecture',
     getParentRoute: () => rootRouteImport,
   } as any)
+const TrustSecurityOverviewRoute = TrustSecurityOverviewRouteImport.update({
+  id: '/trust/security-overview',
+  path: '/trust/security-overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrustSovereignDeploymentRoute =
   TrustSovereignDeploymentRouteImport.update({
     id: '/trust/sovereign-deployment',
@@ -77,24 +107,34 @@ const TrustSovereignDeploymentRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/what-we-build': typeof WhatWeBuildRoute
+  '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/madam': typeof PlatformMadamRoute
+  '/trust/code-ownership': typeof TrustCodeOwnershipRoute
+  '/trust/data-residency': typeof TrustDataResidencyRoute
   '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/what-we-build': typeof WhatWeBuildRoute
+  '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/madam': typeof PlatformMadamRoute
+  '/trust/code-ownership': typeof TrustCodeOwnershipRoute
+  '/trust/data-residency': typeof TrustDataResidencyRoute
   '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
   '/trust': typeof TrustIndexRoute
 }
@@ -102,12 +142,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/what-we-build': typeof WhatWeBuildRoute
+  '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/madam': typeof PlatformMadamRoute
+  '/trust/code-ownership': typeof TrustCodeOwnershipRoute
+  '/trust/data-residency': typeof TrustDataResidencyRoute
   '/trust/deployment-architecture': typeof TrustDeploymentArchitectureRoute
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
+  '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
 }
@@ -116,36 +161,51 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/what-we-build'
+    | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
     | '/platform/madam'
+    | '/trust/code-ownership'
+    | '/trust/data-residency'
     | '/trust/deployment-architecture'
     | '/trust/security-architecture'
+    | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/outcomes/'
     | '/platform/'
     | '/trust/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/what-we-build'
+    | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
     | '/platform/madam'
+    | '/trust/code-ownership'
+    | '/trust/data-residency'
     | '/trust/deployment-architecture'
     | '/trust/security-architecture'
+    | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/outcomes'
     | '/platform'
     | '/trust'
   id:
     | '__root__'
     | '/'
     | '/what-we-build'
+    | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
     | '/platform/madam'
+    | '/trust/code-ownership'
+    | '/trust/data-residency'
     | '/trust/deployment-architecture'
     | '/trust/security-architecture'
+    | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/outcomes/'
     | '/platform/'
     | '/trust/'
   fileRoutesById: FileRoutesById
@@ -153,12 +213,17 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WhatWeBuildRoute: typeof WhatWeBuildRoute
+  OutcomesStorySlugRoute: typeof OutcomesStorySlugRoute
   PlatformAdoptRoute: typeof PlatformAdoptRoute
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
   PlatformMadamRoute: typeof PlatformMadamRoute
+  TrustCodeOwnershipRoute: typeof TrustCodeOwnershipRoute
+  TrustDataResidencyRoute: typeof TrustDataResidencyRoute
   TrustDeploymentArchitectureRoute: typeof TrustDeploymentArchitectureRoute
   TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
+  TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
+  OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
 }
@@ -177,6 +242,20 @@ declare module '@tanstack/react-router' {
       path: '/what-we-build'
       fullPath: '/what-we-build'
       preLoaderRoute: typeof WhatWeBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outcomes/': {
+      id: '/outcomes/'
+      path: '/outcomes'
+      fullPath: '/outcomes/'
+      preLoaderRoute: typeof OutcomesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outcomes/$storySlug': {
+      id: '/outcomes/$storySlug'
+      path: '/outcomes/$storySlug'
+      fullPath: '/outcomes/$storySlug'
+      preLoaderRoute: typeof OutcomesStorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/platform/': {
@@ -214,6 +293,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrustIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trust/code-ownership': {
+      id: '/trust/code-ownership'
+      path: '/trust/code-ownership'
+      fullPath: '/trust/code-ownership'
+      preLoaderRoute: typeof TrustCodeOwnershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/data-residency': {
+      id: '/trust/data-residency'
+      path: '/trust/data-residency'
+      fullPath: '/trust/data-residency'
+      preLoaderRoute: typeof TrustDataResidencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/trust/deployment-architecture': {
       id: '/trust/deployment-architecture'
       path: '/trust/deployment-architecture'
@@ -226,6 +319,13 @@ declare module '@tanstack/react-router' {
       path: '/trust/security-architecture'
       fullPath: '/trust/security-architecture'
       preLoaderRoute: typeof TrustSecurityArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust/security-overview': {
+      id: '/trust/security-overview'
+      path: '/trust/security-overview'
+      fullPath: '/trust/security-overview'
+      preLoaderRoute: typeof TrustSecurityOverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trust/sovereign-deployment': {
@@ -241,12 +341,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WhatWeBuildRoute: WhatWeBuildRoute,
+  OutcomesStorySlugRoute: OutcomesStorySlugRoute,
   PlatformAdoptRoute: PlatformAdoptRoute,
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
   PlatformMadamRoute: PlatformMadamRoute,
+  TrustCodeOwnershipRoute: TrustCodeOwnershipRoute,
+  TrustDataResidencyRoute: TrustDataResidencyRoute,
   TrustDeploymentArchitectureRoute: TrustDeploymentArchitectureRoute,
   TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
+  TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
+  OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
 }
