@@ -232,11 +232,6 @@ export function Header() {
                   ) : null}
                 </li>
               ))}
-              <li>
-                <a href={LOGIN_URL} className="block py-4 text-base font-medium">
-                  Login
-                </a>
-              </li>
             </ul>
           </nav>
           <div className="border-t border-border p-5">
