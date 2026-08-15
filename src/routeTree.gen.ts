@@ -14,11 +14,13 @@ import { Route as CompanyRouteImport } from './routes/company'
 import { Route as WhatZhcBuildsRouteImport } from './routes/what-zhc-builds'
 import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
 import { Route as CybergrcHowItWorksRouteImport } from './routes/cybergrc.how-it-works'
+import { Route as CybergrcResourcesRouteImport } from './routes/cybergrc.resources'
 import { Route as ExecutiveBriefingIndexRouteImport } from './routes/executive-briefing.index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as InsightsAgenticGovernanceRouteImport } from './routes/insights.agentic-governance'
 import { Route as InsightsAutonomousSoftwareProductionRouteImport } from './routes/insights.autonomous-software-production'
 import { Route as InsightsEnterpriseSovereigntyRouteImport } from './routes/insights.enterprise-sovereignty'
+import { Route as InsightsExecutivePerspectivesRouteImport } from './routes/insights.executive-perspectives'
 import { Route as OutcomesIndexRouteImport } from './routes/outcomes.index'
 import { Route as OutcomesStorySlugRouteImport } from './routes/outcomes.$storySlug'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
@@ -61,6 +63,11 @@ const CybergrcHowItWorksRoute = CybergrcHowItWorksRouteImport.update({
   path: '/cybergrc/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CybergrcResourcesRoute = CybergrcResourcesRouteImport.update({
+  id: '/cybergrc/resources',
+  path: '/cybergrc/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExecutiveBriefingIndexRoute = ExecutiveBriefingIndexRouteImport.update({
   id: '/executive-briefing/',
   path: '/executive-briefing/',
@@ -87,6 +94,12 @@ const InsightsEnterpriseSovereigntyRoute =
   InsightsEnterpriseSovereigntyRouteImport.update({
     id: '/insights/enterprise-sovereignty',
     path: '/insights/enterprise-sovereignty',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InsightsExecutivePerspectivesRoute =
+  InsightsExecutivePerspectivesRouteImport.update({
+    id: '/insights/executive-perspectives',
+    path: '/insights/executive-perspectives',
     getParentRoute: () => rootRouteImport,
   } as any)
 const OutcomesIndexRoute = OutcomesIndexRouteImport.update({
@@ -184,9 +197,11 @@ export interface FileRoutesByFullPath {
   '/company': typeof CompanyRoute
   '/what-zhc-builds': typeof WhatZhcBuildsRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/cybergrc/resources': typeof CybergrcResourcesRoute
   '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
+  '/insights/executive-perspectives': typeof InsightsExecutivePerspectivesRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -212,9 +227,11 @@ export interface FileRoutesByTo {
   '/company': typeof CompanyRoute
   '/what-zhc-builds': typeof WhatZhcBuildsRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/cybergrc/resources': typeof CybergrcResourcesRoute
   '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
+  '/insights/executive-perspectives': typeof InsightsExecutivePerspectivesRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -241,9 +258,11 @@ export interface FileRoutesById {
   '/company': typeof CompanyRoute
   '/what-zhc-builds': typeof WhatZhcBuildsRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
+  '/cybergrc/resources': typeof CybergrcResourcesRoute
   '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
+  '/insights/executive-perspectives': typeof InsightsExecutivePerspectivesRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -271,9 +290,11 @@ export interface FileRouteTypes {
     | '/company'
     | '/what-zhc-builds'
     | '/cybergrc/how-it-works'
+    | '/cybergrc/resources'
     | '/insights/agentic-governance'
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
+    | '/insights/executive-perspectives'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -299,9 +320,11 @@ export interface FileRouteTypes {
     | '/company'
     | '/what-zhc-builds'
     | '/cybergrc/how-it-works'
+    | '/cybergrc/resources'
     | '/insights/agentic-governance'
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
+    | '/insights/executive-perspectives'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -327,9 +350,11 @@ export interface FileRouteTypes {
     | '/company'
     | '/what-zhc-builds'
     | '/cybergrc/how-it-works'
+    | '/cybergrc/resources'
     | '/insights/agentic-governance'
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
+    | '/insights/executive-perspectives'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -356,9 +381,11 @@ export interface RootRouteChildren {
   CompanyRoute: typeof CompanyRoute
   WhatZhcBuildsRoute: typeof WhatZhcBuildsRoute
   CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
+  CybergrcResourcesRoute: typeof CybergrcResourcesRoute
   InsightsAgenticGovernanceRoute: typeof InsightsAgenticGovernanceRoute
   InsightsAutonomousSoftwareProductionRoute: typeof InsightsAutonomousSoftwareProductionRoute
   InsightsEnterpriseSovereigntyRoute: typeof InsightsEnterpriseSovereigntyRoute
+  InsightsExecutivePerspectivesRoute: typeof InsightsExecutivePerspectivesRoute
   OutcomesStorySlugRoute: typeof OutcomesStorySlugRoute
   PlatformAdoptRoute: typeof PlatformAdoptRoute
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
@@ -417,6 +444,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CybergrcHowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cybergrc/resources': {
+      id: '/cybergrc/resources'
+      path: '/cybergrc/resources'
+      fullPath: '/cybergrc/resources'
+      preLoaderRoute: typeof CybergrcResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/executive-briefing/': {
       id: '/executive-briefing/'
       path: '/executive-briefing'
@@ -450,6 +484,13 @@ declare module '@tanstack/react-router' {
       path: '/insights/enterprise-sovereignty'
       fullPath: '/insights/enterprise-sovereignty'
       preLoaderRoute: typeof InsightsEnterpriseSovereigntyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/executive-perspectives': {
+      id: '/insights/executive-perspectives'
+      path: '/insights/executive-perspectives'
+      fullPath: '/insights/executive-perspectives'
+      preLoaderRoute: typeof InsightsExecutivePerspectivesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/outcomes/': {
@@ -572,10 +613,12 @@ const rootRouteChildren: RootRouteChildren = {
   CompanyRoute: CompanyRoute,
   WhatZhcBuildsRoute: WhatZhcBuildsRoute,
   CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
+  CybergrcResourcesRoute: CybergrcResourcesRoute,
   InsightsAgenticGovernanceRoute: InsightsAgenticGovernanceRoute,
   InsightsAutonomousSoftwareProductionRoute:
     InsightsAutonomousSoftwareProductionRoute,
   InsightsEnterpriseSovereigntyRoute: InsightsEnterpriseSovereigntyRoute,
+  InsightsExecutivePerspectivesRoute: InsightsExecutivePerspectivesRoute,
   OutcomesStorySlugRoute: OutcomesStorySlugRoute,
   PlatformAdoptRoute: PlatformAdoptRoute,
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
