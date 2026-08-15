@@ -5,9 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Essert design system — monochrome enterprise.
- * All colors in oklch. No brand color beyond neutral scale + near-black.
+ * Essert design system — Brand Foundation, Direction B ("Press").
+ * Paper #FAF9F5 ground, Ink #060810 type/rule, neutral scale for section rhythm.
+ * Cobalt #0067FD (data emphasis / one CTA moment) and Fuchsia #E4005C (single-word
+ * or single-data-point emphasis) are punctuation only: never fields, never gradients.
  */
+
 
 @theme inline {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
