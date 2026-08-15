@@ -6,7 +6,7 @@ const TITLE = "Request the Security Overview | Essert";
 const DESC =
   "Evaluating ZHC from a security or vendor-risk standpoint? Request the current security overview material directly — no executive meeting required.";
 
-export const Route = createFileRoute("/trust/security-overview")({
+export const Route = createFileRoute("/trust-control/request-security-overview/")({
   head: () => ({
     meta: [
       { title: TITLE },

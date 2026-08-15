@@ -15,7 +15,7 @@ const TITLE = "Code Ownership & Portability — what you get is yours to run | E
 const DESC =
   "A ZHC engagement defines ownership and the ability to operate independently up front, as part of the Transfer or continue stage of the lifecycle.";
 
-export const Route = createFileRoute("/trust/code-ownership")({
+export const Route = createFileRoute("/trust-control/code-ownership-portability")({
   head: () => ({
     meta: [
       { title: TITLE },

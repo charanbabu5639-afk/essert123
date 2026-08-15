@@ -51,7 +51,7 @@ function Home() {
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <CtaLink to="/executive-briefing">Book an Executive Briefing</CtaLink>
-                <CtaLink to="/what-we-build" variant="outline">
+                <CtaLink to="/what-zhc-builds" variant="outline">
                   See What ZHC Builds
                 </CtaLink>
               </div>
@@ -122,7 +122,7 @@ function Home() {
             ]}
           />
           <div className="mt-8">
-            <ArrowLink to="/what-we-build">See what ZHC builds in detail</ArrowLink>
+            <ArrowLink to="/what-zhc-builds">See what ZHC builds in detail</ArrowLink>
           </div>
         </div>
       </Section>

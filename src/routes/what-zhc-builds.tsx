@@ -15,7 +15,7 @@ const TITLE = "What ZHC Builds — categories a specification can produce | Esse
 const DESC =
   "New enterprise applications, modernization, customer-facing portals, security and compliance platforms, and enterprise agents and AI systems — produced under one governed lifecycle.";
 
-export const Route = createFileRoute("/what-we-build")({
+export const Route = createFileRoute("/what-zhc-builds")({
   head: () => ({
     meta: [
       { title: TITLE },

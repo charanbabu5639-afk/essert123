@@ -131,7 +131,7 @@ function PlatformPage() {
           <DeploymentContinuum />
         </div>
         <div className="mt-8">
-          <ArrowLink to="/trust/sovereign-deployment">See the full continuum</ArrowLink>
+          <ArrowLink to="/trust-control/sovereign-deployment">See the full continuum</ArrowLink>
         </div>
       </Section>
 

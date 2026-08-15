@@ -14,7 +14,7 @@ const TITLE = "Deployment Architecture — a governed stage, not a handoff | Ess
 const DESC =
   "Deploy is one of the seven stages in the ZHC lifecycle: a validated, secured system placed into the deployment model the enterprise has chosen.";
 
-export const Route = createFileRoute("/trust/deployment-architecture")({
+export const Route = createFileRoute("/trust-control/deployment-architecture")({
   head: () => ({
     meta: [
       { title: TITLE },
