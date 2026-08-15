@@ -11,11 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CompanyRouteImport } from './routes/company'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as WhatZhcBuildsRouteImport } from './routes/what-zhc-builds'
 import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
 import { Route as CybergrcHowItWorksRouteImport } from './routes/cybergrc.how-it-works'
 import { Route as CybergrcResourcesRouteImport } from './routes/cybergrc.resources'
 import { Route as ExecutiveBriefingIndexRouteImport } from './routes/executive-briefing.index'
+import { Route as ExecutiveBriefingConfirmedRouteImport } from './routes/executive-briefing.confirmed'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as InsightsAgenticGovernanceRouteImport } from './routes/insights.agentic-governance'
 import { Route as InsightsAutonomousSoftwareProductionRouteImport } from './routes/insights.autonomous-software-production'
@@ -36,7 +38,9 @@ import { Route as TrustControlSovereignDeploymentRouteImport } from './routes/tr
 import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
 import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 import { Route as CybergrcContactSalesIndexRouteImport } from './routes/cybergrc.contact-sales.index'
+import { Route as CybergrcContactSalesConfirmedRouteImport } from './routes/cybergrc.contact-sales.confirmed'
 import { Route as TrustControlRequestSecurityOverviewIndexRouteImport } from './routes/trust-control.request-security-overview.index'
+import { Route as TrustControlRequestSecurityOverviewConfirmedRouteImport } from './routes/trust-control.request-security-overview.confirmed'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +50,11 @@ const IndexRoute = IndexRouteImport.update({
 const CompanyRoute = CompanyRouteImport.update({
   id: '/company',
   path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhatZhcBuildsRoute = WhatZhcBuildsRouteImport.update({
@@ -73,6 +82,12 @@ const ExecutiveBriefingIndexRoute = ExecutiveBriefingIndexRouteImport.update({
   path: '/executive-briefing/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExecutiveBriefingConfirmedRoute =
+  ExecutiveBriefingConfirmedRouteImport.update({
+    id: '/executive-briefing/confirmed',
+    path: '/executive-briefing/confirmed',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const InsightsIndexRoute = InsightsIndexRouteImport.update({
   id: '/insights/',
   path: '/insights/',
@@ -185,19 +200,33 @@ const CybergrcContactSalesIndexRoute =
     path: '/cybergrc/contact-sales/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const CybergrcContactSalesConfirmedRoute =
+  CybergrcContactSalesConfirmedRouteImport.update({
+    id: '/cybergrc/contact-sales/confirmed',
+    path: '/cybergrc/contact-sales/confirmed',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TrustControlRequestSecurityOverviewIndexRoute =
   TrustControlRequestSecurityOverviewIndexRouteImport.update({
     id: '/trust-control/request-security-overview/',
     path: '/trust-control/request-security-overview/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const TrustControlRequestSecurityOverviewConfirmedRoute =
+  TrustControlRequestSecurityOverviewConfirmedRouteImport.update({
+    id: '/trust-control/request-security-overview/confirmed',
+    path: '/trust-control/request-security-overview/confirmed',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
   '/what-zhc-builds': typeof WhatZhcBuildsRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
   '/cybergrc/resources': typeof CybergrcResourcesRoute
+  '/executive-briefing/confirmed': typeof ExecutiveBriefingConfirmedRoute
   '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
@@ -218,6 +247,8 @@ export interface FileRoutesByFullPath {
   '/platform/': typeof PlatformIndexRoute
   '/trust-control/': typeof TrustControlIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/contact-sales/confirmed': typeof CybergrcContactSalesConfirmedRoute
+  '/trust-control/request-security-overview/confirmed': typeof TrustControlRequestSecurityOverviewConfirmedRoute
   '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
   '/cybergrc/contact-sales/': typeof CybergrcContactSalesIndexRoute
   '/trust-control/request-security-overview/': typeof TrustControlRequestSecurityOverviewIndexRoute
@@ -225,9 +256,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
   '/what-zhc-builds': typeof WhatZhcBuildsRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
   '/cybergrc/resources': typeof CybergrcResourcesRoute
+  '/executive-briefing/confirmed': typeof ExecutiveBriefingConfirmedRoute
   '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
@@ -248,6 +281,8 @@ export interface FileRoutesByTo {
   '/platform': typeof PlatformIndexRoute
   '/trust-control': typeof TrustControlIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/contact-sales/confirmed': typeof CybergrcContactSalesConfirmedRoute
+  '/trust-control/request-security-overview/confirmed': typeof TrustControlRequestSecurityOverviewConfirmedRoute
   '/cybergrc/applications': typeof CybergrcApplicationsIndexRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesIndexRoute
   '/trust-control/request-security-overview': typeof TrustControlRequestSecurityOverviewIndexRoute
@@ -256,9 +291,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
   '/what-zhc-builds': typeof WhatZhcBuildsRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
   '/cybergrc/resources': typeof CybergrcResourcesRoute
+  '/executive-briefing/confirmed': typeof ExecutiveBriefingConfirmedRoute
   '/insights/agentic-governance': typeof InsightsAgenticGovernanceRoute
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
@@ -279,6 +316,8 @@ export interface FileRoutesById {
   '/platform/': typeof PlatformIndexRoute
   '/trust-control/': typeof TrustControlIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
+  '/cybergrc/contact-sales/confirmed': typeof CybergrcContactSalesConfirmedRoute
+  '/trust-control/request-security-overview/confirmed': typeof TrustControlRequestSecurityOverviewConfirmedRoute
   '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
   '/cybergrc/contact-sales/': typeof CybergrcContactSalesIndexRoute
   '/trust-control/request-security-overview/': typeof TrustControlRequestSecurityOverviewIndexRoute
@@ -288,9 +327,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/company'
+    | '/contact'
     | '/what-zhc-builds'
     | '/cybergrc/how-it-works'
     | '/cybergrc/resources'
+    | '/executive-briefing/confirmed'
     | '/insights/agentic-governance'
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
@@ -311,6 +352,8 @@ export interface FileRouteTypes {
     | '/platform/'
     | '/trust-control/'
     | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/contact-sales/confirmed'
+    | '/trust-control/request-security-overview/confirmed'
     | '/cybergrc/applications/'
     | '/cybergrc/contact-sales/'
     | '/trust-control/request-security-overview/'
@@ -318,9 +361,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/company'
+    | '/contact'
     | '/what-zhc-builds'
     | '/cybergrc/how-it-works'
     | '/cybergrc/resources'
+    | '/executive-briefing/confirmed'
     | '/insights/agentic-governance'
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
@@ -341,6 +386,8 @@ export interface FileRouteTypes {
     | '/platform'
     | '/trust-control'
     | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/contact-sales/confirmed'
+    | '/trust-control/request-security-overview/confirmed'
     | '/cybergrc/applications'
     | '/cybergrc/contact-sales'
     | '/trust-control/request-security-overview'
@@ -348,9 +395,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/company'
+    | '/contact'
     | '/what-zhc-builds'
     | '/cybergrc/how-it-works'
     | '/cybergrc/resources'
+    | '/executive-briefing/confirmed'
     | '/insights/agentic-governance'
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
@@ -371,6 +420,8 @@ export interface FileRouteTypes {
     | '/platform/'
     | '/trust-control/'
     | '/cybergrc/applications/$applicationSlug'
+    | '/cybergrc/contact-sales/confirmed'
+    | '/trust-control/request-security-overview/confirmed'
     | '/cybergrc/applications/'
     | '/cybergrc/contact-sales/'
     | '/trust-control/request-security-overview/'
@@ -379,9 +430,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompanyRoute: typeof CompanyRoute
+  ContactRoute: typeof ContactRoute
   WhatZhcBuildsRoute: typeof WhatZhcBuildsRoute
   CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
   CybergrcResourcesRoute: typeof CybergrcResourcesRoute
+  ExecutiveBriefingConfirmedRoute: typeof ExecutiveBriefingConfirmedRoute
   InsightsAgenticGovernanceRoute: typeof InsightsAgenticGovernanceRoute
   InsightsAutonomousSoftwareProductionRoute: typeof InsightsAutonomousSoftwareProductionRoute
   InsightsEnterpriseSovereigntyRoute: typeof InsightsEnterpriseSovereigntyRoute
@@ -402,6 +455,8 @@ export interface RootRouteChildren {
   PlatformIndexRoute: typeof PlatformIndexRoute
   TrustControlIndexRoute: typeof TrustControlIndexRoute
   CybergrcApplicationsApplicationSlugRoute: typeof CybergrcApplicationsApplicationSlugRoute
+  CybergrcContactSalesConfirmedRoute: typeof CybergrcContactSalesConfirmedRoute
+  TrustControlRequestSecurityOverviewConfirmedRoute: typeof TrustControlRequestSecurityOverviewConfirmedRoute
   CybergrcApplicationsIndexRoute: typeof CybergrcApplicationsIndexRoute
   CybergrcContactSalesIndexRoute: typeof CybergrcContactSalesIndexRoute
   TrustControlRequestSecurityOverviewIndexRoute: typeof TrustControlRequestSecurityOverviewIndexRoute
@@ -421,6 +476,13 @@ declare module '@tanstack/react-router' {
       path: '/company'
       fullPath: '/company'
       preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/what-zhc-builds': {
@@ -456,6 +518,13 @@ declare module '@tanstack/react-router' {
       path: '/executive-briefing'
       fullPath: '/executive-briefing/'
       preLoaderRoute: typeof ExecutiveBriefingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/executive-briefing/confirmed': {
+      id: '/executive-briefing/confirmed'
+      path: '/executive-briefing/confirmed'
+      fullPath: '/executive-briefing/confirmed'
+      preLoaderRoute: typeof ExecutiveBriefingConfirmedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights/': {
@@ -598,11 +667,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CybergrcContactSalesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cybergrc/contact-sales/confirmed': {
+      id: '/cybergrc/contact-sales/confirmed'
+      path: '/cybergrc/contact-sales/confirmed'
+      fullPath: '/cybergrc/contact-sales/confirmed'
+      preLoaderRoute: typeof CybergrcContactSalesConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/trust-control/request-security-overview/': {
       id: '/trust-control/request-security-overview/'
       path: '/trust-control/request-security-overview'
       fullPath: '/trust-control/request-security-overview/'
       preLoaderRoute: typeof TrustControlRequestSecurityOverviewIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust-control/request-security-overview/confirmed': {
+      id: '/trust-control/request-security-overview/confirmed'
+      path: '/trust-control/request-security-overview/confirmed'
+      fullPath: '/trust-control/request-security-overview/confirmed'
+      preLoaderRoute: typeof TrustControlRequestSecurityOverviewConfirmedRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -611,9 +694,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompanyRoute: CompanyRoute,
+  ContactRoute: ContactRoute,
   WhatZhcBuildsRoute: WhatZhcBuildsRoute,
   CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
   CybergrcResourcesRoute: CybergrcResourcesRoute,
+  ExecutiveBriefingConfirmedRoute: ExecutiveBriefingConfirmedRoute,
   InsightsAgenticGovernanceRoute: InsightsAgenticGovernanceRoute,
   InsightsAutonomousSoftwareProductionRoute:
     InsightsAutonomousSoftwareProductionRoute,
@@ -639,6 +724,9 @@ const rootRouteChildren: RootRouteChildren = {
   TrustControlIndexRoute: TrustControlIndexRoute,
   CybergrcApplicationsApplicationSlugRoute:
     CybergrcApplicationsApplicationSlugRoute,
+  CybergrcContactSalesConfirmedRoute: CybergrcContactSalesConfirmedRoute,
+  TrustControlRequestSecurityOverviewConfirmedRoute:
+    TrustControlRequestSecurityOverviewConfirmedRoute,
   CybergrcApplicationsIndexRoute: CybergrcApplicationsIndexRoute,
   CybergrcContactSalesIndexRoute: CybergrcContactSalesIndexRoute,
   TrustControlRequestSecurityOverviewIndexRoute:
