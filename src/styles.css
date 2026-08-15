@@ -252,3 +252,49 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Direction B structural devices ---- */
+
+/* Drafting-style annotation: mono, small, uppercase-ish metadata. */
+@utility annot {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--color-muted-foreground);
+}
+
+/* Folio numbering — section numbers like 01 / 02. */
+@utility folio {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-muted-foreground);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible baseline under display/section headlines — structure, never decoration. */
+@utility baseline-rule {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+/* Exposed grid field: faint vertical column rules. */
+@utility grid-field {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border) 0 1px,
+    transparent 1px calc(100% / 12)
+  );
+}
+
+/* Data emphasis — Cobalt, one moment per view. */
+@utility data-accent {
+  color: var(--color-cobalt);
+}
+
+/* Rarest emphasis — Fuchsia, one data point or single word per view. */
+@utility mark-accent {
+  color: var(--color-fuchsia);
+}
