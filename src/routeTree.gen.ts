@@ -23,6 +23,8 @@ import { Route as InsightsAgenticGovernanceRouteImport } from './routes/insights
 import { Route as InsightsAutonomousSoftwareProductionRouteImport } from './routes/insights.autonomous-software-production'
 import { Route as InsightsEnterpriseSovereigntyRouteImport } from './routes/insights.enterprise-sovereignty'
 import { Route as InsightsExecutivePerspectivesRouteImport } from './routes/insights.executive-perspectives'
+import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
+import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as OutcomesIndexRouteImport } from './routes/outcomes.index'
 import { Route as OutcomesStorySlugRouteImport } from './routes/outcomes.$storySlug'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
@@ -117,6 +119,16 @@ const InsightsExecutivePerspectivesRoute =
     path: '/insights/executive-perspectives',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OutcomesIndexRoute = OutcomesIndexRouteImport.update({
   id: '/outcomes/',
   path: '/outcomes/',
@@ -231,6 +243,8 @@ export interface FileRoutesByFullPath {
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
   '/insights/executive-perspectives': typeof InsightsExecutivePerspectivesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -265,6 +279,8 @@ export interface FileRoutesByTo {
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
   '/insights/executive-perspectives': typeof InsightsExecutivePerspectivesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -300,6 +316,8 @@ export interface FileRoutesById {
   '/insights/autonomous-software-production': typeof InsightsAutonomousSoftwareProductionRoute
   '/insights/enterprise-sovereignty': typeof InsightsEnterpriseSovereigntyRoute
   '/insights/executive-perspectives': typeof InsightsExecutivePerspectivesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/outcomes/$storySlug': typeof OutcomesStorySlugRoute
   '/platform/adopt': typeof PlatformAdoptRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
@@ -336,6 +354,8 @@ export interface FileRouteTypes {
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
     | '/insights/executive-perspectives'
+    | '/legal/privacy'
+    | '/legal/terms'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -370,6 +390,8 @@ export interface FileRouteTypes {
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
     | '/insights/executive-perspectives'
+    | '/legal/privacy'
+    | '/legal/terms'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -404,6 +426,8 @@ export interface FileRouteTypes {
     | '/insights/autonomous-software-production'
     | '/insights/enterprise-sovereignty'
     | '/insights/executive-perspectives'
+    | '/legal/privacy'
+    | '/legal/terms'
     | '/outcomes/$storySlug'
     | '/platform/adopt'
     | '/platform/how-it-works'
@@ -439,6 +463,8 @@ export interface RootRouteChildren {
   InsightsAutonomousSoftwareProductionRoute: typeof InsightsAutonomousSoftwareProductionRoute
   InsightsEnterpriseSovereigntyRoute: typeof InsightsEnterpriseSovereigntyRoute
   InsightsExecutivePerspectivesRoute: typeof InsightsExecutivePerspectivesRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalTermsRoute: typeof LegalTermsRoute
   OutcomesStorySlugRoute: typeof OutcomesStorySlugRoute
   PlatformAdoptRoute: typeof PlatformAdoptRoute
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
@@ -560,6 +586,20 @@ declare module '@tanstack/react-router' {
       path: '/insights/executive-perspectives'
       fullPath: '/insights/executive-perspectives'
       preLoaderRoute: typeof InsightsExecutivePerspectivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/terms': {
+      id: '/legal/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/outcomes/': {
@@ -704,6 +744,8 @@ const rootRouteChildren: RootRouteChildren = {
     InsightsAutonomousSoftwareProductionRoute,
   InsightsEnterpriseSovereigntyRoute: InsightsEnterpriseSovereigntyRoute,
   InsightsExecutivePerspectivesRoute: InsightsExecutivePerspectivesRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalTermsRoute: LegalTermsRoute,
   OutcomesStorySlugRoute: OutcomesStorySlugRoute,
   PlatformAdoptRoute: PlatformAdoptRoute,
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
