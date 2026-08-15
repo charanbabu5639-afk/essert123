@@ -10,9 +10,9 @@ import {
   SectionHead,
 } from "@/components/site/primitives";
 
-const TITLE = "Adopt ZHC — Build with ZHC engagement model | Essert";
+const TITLE = "Adopt ZHC — operate the platform directly | Essert";
 const DESC =
-  "Build with ZHC: the customer adopts ZHC as its own enterprise production platform and operates it directly. Packaging is in development.";
+  "Adopt ZHC: the customer adopts ZHC as its own enterprise production platform and operates it directly. Packaging is in development.";
 
 export const Route = createFileRoute("/platform/adopt")({
   head: () => ({
@@ -31,8 +31,8 @@ function AdoptPage() {
     <>
       <PageHero
         kicker="Platform → Adopt ZHC"
-        title="Build with ZHC — operate the platform directly."
-        lede="The customer adopts ZHC as its own enterprise production platform, operating it directly. Built with ZHC and Build with ZHC are two engagement models on one platform, not two products."
+        title="Adopt ZHC — operate the platform directly."
+        lede="The customer adopts ZHC as its own enterprise production platform, operating it directly. Delivered with ZHC and Adopt ZHC are two engagement models on one platform, not two products."
         actions={<CtaLink to="/executive-briefing">Book an Executive Briefing</CtaLink>}
       />
 
@@ -51,12 +51,12 @@ function AdoptPage() {
         <Faqs
           items={[
             {
-              q: "What is the difference between Built with ZHC and Build with ZHC?",
-              a: "Built with ZHC means a defined production outcome is delivered using ZHC. Build with ZHC means the customer operates ZHC directly as its own production platform.",
+              q: "What is the difference between Delivered with ZHC and Adopt ZHC?",
+              a: "Delivered with ZHC means a defined production outcome is delivered using ZHC. Adopt ZHC means the customer operates ZHC directly as its own production platform.",
             },
             {
               q: "Can I buy ZHC today?",
-              a: "Engagement is discussed in an executive briefing. Packaged pricing for the Build with ZHC model is in development.",
+              a: "Engagement is discussed in an executive briefing. Packaged pricing for the Adopt ZHC model is in development.",
             },
           ]}
         />

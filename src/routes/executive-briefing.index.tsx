@@ -11,7 +11,7 @@ const TITLE = "Book an executive briefing | Essert";
 const DESC =
   "A direct conversation about one enterprise use case — what you need in production, at what scale, on what timeline. Not a sales pitch, and not a demo.";
 
-export const Route = createFileRoute("/executive-briefing")({
+export const Route = createFileRoute("/executive-briefing/")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -41,7 +41,7 @@ function ExecutiveBriefing() {
               lede="We don't ask for architecture, deployment configuration, or security-review detail before this first conversation — that comes after, matched to your environment. If you need security material before a briefing, request it directly."
             />
             <div className="mt-8">
-              <ArrowLink to="/trust/security-overview">Request the Security Overview</ArrowLink>
+              <ArrowLink to="/trust-control/request-security-overview">Request the Security Overview</ArrowLink>
             </div>
           </div>
           <div className="lg:col-span-7">

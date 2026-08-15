@@ -14,7 +14,7 @@ const TITLE = "Trust & Control — control it, secure it, own it | Essert";
 const DESC =
   "Decide where ZHC runs, what it can access, who owns the system it produces, and how portable that system is. The starting point for enterprise evaluation.";
 
-export const Route = createFileRoute("/trust/")({
+export const Route = createFileRoute("/trust-control/")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -33,17 +33,17 @@ const GROUPS = [
       {
         label: "Security Architecture",
         detail: "How ZHC's operation and output are secured.",
-        to: "/trust/security-architecture",
+        to: "/trust-control/security-architecture",
       },
       {
         label: "Data Handling & Residency",
         detail: "Where data lives and how it's governed.",
-        to: "/trust/data-residency",
+        to: "/trust-control/data-handling-residency",
       },
       {
         label: "Code Ownership & Portability",
         detail: "What you own, and what it takes to operate independently.",
-        to: "/trust/code-ownership",
+        to: "/trust-control/code-ownership-portability",
       },
     ],
   },
@@ -53,12 +53,12 @@ const GROUPS = [
       {
         label: "Sovereign Deployment",
         detail: "The full deployment continuum, from Essert-hosted to fully customer-controlled.",
-        to: "/trust/sovereign-deployment",
+        to: "/trust-control/sovereign-deployment",
       },
       {
         label: "Deployment Architecture",
         detail: "How a ZHC-produced system is deployed in your environment.",
-        to: "/trust/deployment-architecture",
+        to: "/trust-control/deployment-architecture",
       },
     ],
   },
@@ -68,7 +68,7 @@ const GROUPS = [
       {
         label: "Request the Security Overview",
         detail: "Security and vendor-risk material, without an executive meeting first.",
-        to: "/trust/security-overview",
+        to: "/trust-control/request-security-overview",
       },
       {
         label: "Book an Executive Briefing",
@@ -88,7 +88,7 @@ function TrustPage() {
         lede="Enterprise control means deciding where ZHC runs, what it can access, who owns the system it produces, and how portable that system is. This page is the starting point for evaluating all four."
         actions={
           <>
-            <CtaLink to="/trust/security-overview">Request the Security Overview</CtaLink>
+            <CtaLink to="/trust-control/request-security-overview">Request the Security Overview</CtaLink>
             <CtaLink to="/executive-briefing" variant="outline">
               Book an Executive Briefing
             </CtaLink>
@@ -163,7 +163,7 @@ function TrustPage() {
 
       <ClosingCta
         title="Evaluate ZHC against your own control requirements."
-        to="/trust/security-overview"
+        to="/trust-control/request-security-overview"
         label="Request the Security Overview"
       />
     </>

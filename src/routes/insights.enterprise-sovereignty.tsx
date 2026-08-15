@@ -28,7 +28,7 @@ function Topic() {
       <Section bordered={false}>
         <div className="max-w-3xl space-y-6">
           <PendingNote>Article index to populate at launch.</PendingNote>
-          <ArrowLink to="/trust/sovereign-deployment">See the deployment continuum</ArrowLink>
+          <ArrowLink to="/trust-control/sovereign-deployment">See the deployment continuum</ArrowLink>
         </div>
       </Section>
       <ClosingCta title="Test the sovereignty posture against your requirements." />

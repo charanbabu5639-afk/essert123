@@ -15,7 +15,7 @@ const TITLE = "Security Architecture — security as a lifecycle stage | Essert"
 const DESC =
   "Every system ZHC produces passes through a defined Secure stage before deployment, and MADAM manages AI security posture and access controls across the whole lifecycle.";
 
-export const Route = createFileRoute("/trust/security-architecture")({
+export const Route = createFileRoute("/trust-control/security-architecture")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -34,7 +34,7 @@ function SecurityArchitecture() {
         kicker="Trust & Control → Security Architecture"
         title="Security is a stage in the lifecycle, not an afterthought."
         lede="Every system ZHC produces passes through a defined Secure stage before deployment, and MADAM manages AI security posture and access controls for the whole lifecycle, not just at that stage."
-        actions={<CtaLink to="/trust/security-overview">Request the Security Overview</CtaLink>}
+        actions={<CtaLink to="/trust-control/request-security-overview">Request the Security Overview</CtaLink>}
       />
 
       <Section bordered={false}>
@@ -96,7 +96,7 @@ function SecurityArchitecture() {
 
       <ClosingCta
         title="Get the current security overview material."
-        to="/trust/security-overview"
+        to="/trust-control/request-security-overview"
         label="Request the Security Overview"
       />
     </>

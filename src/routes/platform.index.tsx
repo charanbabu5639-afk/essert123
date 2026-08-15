@@ -97,14 +97,14 @@ function PlatformPage() {
         />
         <div className="mt-10 grid gap-px bg-border lg:grid-cols-2">
           <div className="bg-background p-8">
-            <p className="kicker">Built with ZHC</p>
+            <p className="kicker">Delivered with ZHC</p>
             <p className="mt-4 text-[0.9375rem] leading-relaxed">
               Essert, the customer, or a joint team delivers a defined production outcome using ZHC.
               This is the fastest path to a specific system in production.
             </p>
           </div>
           <div className="bg-background p-8">
-            <p className="kicker">Build with ZHC</p>
+            <p className="kicker">Adopt ZHC</p>
             <p className="mt-4 text-[0.9375rem] leading-relaxed">
               The customer adopts ZHC as its own enterprise production platform, operating it
               directly.
@@ -131,7 +131,7 @@ function PlatformPage() {
           <DeploymentContinuum />
         </div>
         <div className="mt-8">
-          <ArrowLink to="/trust/sovereign-deployment">See the full continuum</ArrowLink>
+          <ArrowLink to="/trust-control/sovereign-deployment">See the full continuum</ArrowLink>
         </div>
       </Section>
 
@@ -156,7 +156,7 @@ function PlatformPage() {
             },
             {
               q: "Can I buy ZHC today?",
-              a: "Engagement is discussed in an executive briefing. Packaged pricing for the Build with ZHC model is in development.",
+              a: "Engagement is discussed in an executive briefing. Packaged pricing for the Adopt ZHC model is in development.",
             },
           ]}
         />
