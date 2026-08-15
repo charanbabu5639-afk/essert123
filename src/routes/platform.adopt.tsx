@@ -10,7 +10,7 @@ import {
   SectionHead,
 } from "@/components/site/primitives";
 
-const TITLE = "Adopt ZHC — Adopt ZHC engagement model | Essert";
+const TITLE = "Adopt ZHC — operate the platform directly | Essert";
 const DESC =
   "Adopt ZHC: the customer adopts ZHC as its own enterprise production platform and operates it directly. Packaging is in development.";
 
