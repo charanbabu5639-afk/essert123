@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Container, CtaLink } from "./primitives";
 import { Logo } from "./Logo";
-import { PRIMARY_NAV, LOGIN_URL, primaryCta, type NavColumn } from "@/lib/navigation";
+import { PRIMARY_NAV, primaryCta, type NavColumn } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 function MegaMenuColumns({ columns, onNavigate }: { columns: NavColumn[]; onNavigate: () => void }) {
@@ -64,7 +64,8 @@ export function Header() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   };
 
-  const activeColumns = PRIMARY_NAV.find((n) => n.label === openMenu)?.columns;
+  const activeItem = PRIMARY_NAV.find((n) => n.label === openMenu);
+  const activeColumns = activeItem?.columns;
 
   const isActive = (prefix: string) => pathname === prefix || pathname.startsWith(prefix + "/");
 
@@ -163,6 +164,9 @@ export function Header() {
           onMouseLeave={scheduleClose}
         >
           <div className="mx-auto w-full max-w-[1280px] px-8 py-8 xl:px-12">
+            {activeItem?.blurb ? (
+              <p className="annot mb-6 max-w-2xl">{activeItem.blurb}</p>
+            ) : null}
             <MegaMenuColumns columns={activeColumns} onNavigate={() => setOpenMenu(null)} />
           </div>
         </div>
@@ -204,7 +208,7 @@ export function Header() {
                   </div>
                   {item.columns && mobileGroup === item.label ? (
                     <div className="space-y-5 pb-5 pl-1">
-                      {item.columns.map((col, i) => (
+                      {(item.mobile ?? item.columns).map((col, i) => (
                         <div key={col.head || `m-col-${i}`}>
                           {col.head ? <p className="kicker mb-2">{col.head}</p> : null}
                           <ul className="space-y-1">
