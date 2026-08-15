@@ -139,15 +139,10 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              href={LOGIN_URL}
-              className="hidden text-sm font-medium text-foreground/70 transition-colors hover:text-foreground lg:block"
-            >
-              Login
-            </a>
             <CtaLink to={cta.to} className="hidden whitespace-nowrap px-4 py-2.5 lg:inline-flex">
               {cta.label}
             </CtaLink>
+
             <button
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
