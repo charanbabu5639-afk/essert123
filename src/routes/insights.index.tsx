@@ -40,7 +40,13 @@ const TOPICS = [
     label: "Enterprise Sovereignty",
     detail: "What real control over deployment, data, and code requires.",
   },
+  {
+    to: "/insights/executive-perspectives" as const,
+    label: "Executive Perspectives",
+    detail: "What autonomous production changes for the CIO, CTO, and CISO.",
+  },
 ];
+
 
 function Insights() {
   return (
