@@ -65,7 +65,7 @@ function CodeOwnership() {
         <SectionHead kicker="Ownership" title="Defined per engagement." />
         <div className="mt-8 max-w-3xl space-y-5">
           <p className="text-[0.9375rem] leading-relaxed">
-            Ownership terms are defined as part of the specific engagement — Built with ZHC or Build
+            Ownership terms are defined as part of the specific engagement — Delivered with ZHC or Build
             with ZHC.
           </p>
           <PendingNote>Exact contractual ownership language required.</PendingNote>

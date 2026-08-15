@@ -67,7 +67,7 @@ function DeploymentArchitecture() {
             },
             {
               q: "Who operates the system after it's deployed?",
-              a: "Depends on the engagement model — Build with ZHC vs. Built with ZHC — and on the transfer terms defined under Code Ownership & Portability.",
+              a: "Depends on the engagement model — Adopt ZHC vs. Delivered with ZHC — and on the transfer terms defined under Code Ownership & Portability.",
             },
           ]}
         />

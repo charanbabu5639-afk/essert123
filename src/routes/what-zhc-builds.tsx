@@ -141,7 +141,7 @@ function WhatWeBuild() {
             },
             {
               q: "Does Essert build this, or do we build it ourselves?",
-              a: "Both models exist. Built with ZHC means a defined outcome is delivered using ZHC. Build with ZHC means the customer operates ZHC directly.",
+              a: "Both models exist. Delivered with ZHC means a defined outcome is delivered using ZHC. Adopt ZHC means the customer operates ZHC directly.",
             },
           ]}
         />
