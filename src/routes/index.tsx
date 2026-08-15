@@ -166,7 +166,7 @@ function Home() {
           lede="Security architecture, data handling and residency, code ownership and portability, and a deployment path that runs from an Essert-hosted environment to infrastructure you fully control. No capability here is described as available before it is available."
         />
         <div className="mt-8">
-          <ArrowLink to="/trust">Review enterprise control</ArrowLink>
+          <ArrowLink to="/trust-control">Review enterprise control</ArrowLink>
         </div>
       </Section>
 
