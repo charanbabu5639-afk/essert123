@@ -92,19 +92,11 @@ export function Header() {
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center">
               {PRIMARY_NAV.map((item) => (
-                <li
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => {
-                    cancelClose();
-                    setOpenMenu(item.columns ? item.label : null);
-                  }}
-                  onMouseLeave={scheduleClose}
-                >
+                <li key={item.label} className="relative">
                   <span className="flex items-center">
                     <Link
                       to={item.to}
-                      onFocus={() => setOpenMenu(item.columns ? item.label : null)}
+
                       className={cn(
                         "whitespace-nowrap border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
                         isActive(item.matchPrefix)
