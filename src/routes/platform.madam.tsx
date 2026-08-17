@@ -34,7 +34,7 @@ function MadamPage() {
         lede="MADAM — Managed Agentic Deployment and Monitoring — is the governance layer inside ZHC. It is how every agent ZHC runs stays deployed, watched, policed, and secured, from the first specification to a running production system."
         actions={
           <>
-            <CtaLink to="/trust-control/request-security-overview">Request the Security Overview</CtaLink>
+            <CtaLink to="/trust/security-overview">Request the Security Overview</CtaLink>
             <CtaLink to="/executive-briefing" variant="outline">
               Book an Executive Briefing
             </CtaLink>

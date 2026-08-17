@@ -59,7 +59,7 @@ function ApplicationTemplate() {
               ),
             },
             {
-              term: "Produced by ZHC",
+              term: "Built using ZHC",
               detail:
                 "This application is part of the CyberGRC portfolio, produced through ZHC's governed lifecycle.",
             },

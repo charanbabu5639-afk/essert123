@@ -5,30 +5,20 @@ export type PrimaryNav = {
   label: string;
   to: string;
   matchPrefix: string;
-  /** Desktop mega-menu columns. Absent = direct link, no dropdown. */
   columns?: NavColumn[];
-  /** Reduced mobile essential-link set (§19). */
-  mobile?: NavColumn[];
-  /** One-line menu description shown above the columns. */
-  blurb?: string;
 };
 
-/**
- * Login is a blocked item, not a deferred one: no tested production URL exists yet.
- * Header and footer ship with Login absent — never as `#` or a disabled link.
- */
-export const LOGIN_URL: string | null = null;
+/** Placeholder until the final shared login URL is supplied. */
+export const LOGIN_URL = "/login-placeholder";
 
 export const PRIMARY_NAV: PrimaryNav[] = [
   {
     label: "Platform",
     to: "/platform",
     matchPrefix: "/platform",
-    blurb:
-      "ZHC — Zero Human Coding™ is the platform for autonomous enterprise software production.",
     columns: [
       {
-        head: "Explore ZHC",
+        head: "Core",
         items: [
           { label: "ZHC Overview", to: "/platform" },
           { label: "How ZHC Works", to: "/platform/how-it-works" },
@@ -36,130 +26,67 @@ export const PRIMARY_NAV: PrimaryNav[] = [
         ],
       },
       {
-        head: "Engage",
+        head: "Engagement",
         items: [
           { label: "Adopt ZHC", to: "/platform/adopt" },
-          { label: "Delivered with ZHC", to: "/what-zhc-builds" },
-          { label: "Book an Executive Briefing", to: "/executive-briefing" },
-        ],
-      },
-    ],
-    mobile: [
-      {
-        head: "Explore ZHC",
-        items: [
-          { label: "ZHC Overview", to: "/platform" },
-          { label: "How ZHC Works", to: "/platform/how-it-works" },
-          { label: "MADAM — Agentic Governance", to: "/platform/madam" },
+          { label: "Delivered with ZHC", to: "/what-we-build" },
         ],
       },
       {
-        head: "Engage",
-        items: [
-          { label: "Adopt ZHC", to: "/platform/adopt" },
-          { label: "Delivered with ZHC", to: "/what-zhc-builds" },
-          { label: "Book an Executive Briefing", to: "/executive-briefing" },
-        ],
+        head: "",
+        items: [{ label: "Book an Executive Briefing", to: "/executive-briefing" }],
       },
     ],
   },
-  { label: "What ZHC Builds", to: "/what-zhc-builds", matchPrefix: "/what-zhc-builds" },
+  { label: "What ZHC Builds", to: "/what-we-build", matchPrefix: "/what-we-build" },
   {
     label: "CyberGRC",
     to: "/cybergrc",
     matchPrefix: "/cybergrc",
-    blurb: "Independently purchasable enterprise GRC applications built on ZHC.",
     columns: [
       {
-        head: "Explore CyberGRC",
+        head: "CyberGRC",
         items: [
           { label: "CyberGRC Overview", to: "/cybergrc" },
-          { label: "How CyberGRC Works", to: "/cybergrc/how-it-works" },
+          { label: "How CyberGRC Is Built", to: "/cybergrc", hash: "built-with-zhc" },
+          { label: "How it works", to: "/cybergrc/how-it-works" },
         ],
       },
       {
-        head: "Evaluate",
-        items: [
-          { label: "Application Catalog", to: "/cybergrc/applications" },
-          { label: "CyberGRC Resources", to: "/cybergrc/resources" },
-          { label: "Contact Sales", to: "/cybergrc/contact-sales" },
-        ],
-      },
-    ],
-    mobile: [
-      {
-        head: "Explore CyberGRC",
-        items: [
-          { label: "CyberGRC Overview", to: "/cybergrc" },
-          { label: "How CyberGRC Works", to: "/cybergrc/how-it-works" },
-        ],
+        head: "Application catalog",
+        items: [{ label: "View All Applications", to: "/cybergrc/applications" }],
       },
       {
-        head: "Evaluate",
-        items: [
-          { label: "Application Catalog", to: "/cybergrc/applications" },
-          { label: "CyberGRC Resources", to: "/cybergrc/resources" },
-          { label: "Contact Sales", to: "/cybergrc/contact-sales" },
-        ],
+        head: "Commercial path",
+        items: [{ label: "Contact Sales", to: "/cybergrc/contact-sales" }],
       },
     ],
   },
   {
     label: "Trust & Control",
-    to: "/trust-control",
-    matchPrefix: "/trust-control",
+    to: "/trust",
+    matchPrefix: "/trust",
     columns: [
       {
         head: "Control and ownership",
         items: [
-          { label: "Trust & Control Overview", to: "/trust-control" },
-          { label: "Security Architecture", to: "/trust-control/security-architecture" },
-          { label: "Data Handling & Residency", to: "/trust-control/data-handling-residency" },
-          {
-            label: "Code Ownership & Portability",
-            to: "/trust-control/code-ownership-portability",
-          },
+          { label: "Security Architecture", to: "/trust/security-architecture" },
+          { label: "Data Handling & Residency", to: "/trust/data-residency" },
+          { label: "Code Ownership & Portability", to: "/trust/code-ownership" },
         ],
       },
       {
         head: "Deployment and sovereignty",
         items: [
-          { label: "Sovereign Deployment", to: "/trust-control/sovereign-deployment" },
-          { label: "Deployment Architecture", to: "/trust-control/deployment-architecture" },
+          { label: "Deployment Architecture", to: "/trust/deployment-architecture" },
+          { label: "Sovereign Deployment", to: "/trust/sovereign-deployment" },
         ],
       },
       {
         head: "Evaluation",
         items: [
-          {
-            label: "Request the Security Overview",
-            to: "/trust-control/request-security-overview",
-          },
-          { label: "About Essert", to: "/company" },
+          { label: "Request the Security Overview", to: "/trust/security-overview" },
           { label: "Book an Executive Briefing", to: "/executive-briefing" },
-        ],
-      },
-    ],
-    mobile: [
-      {
-        head: "Control and ownership",
-        items: [
-          { label: "Trust & Control Overview", to: "/trust-control" },
-          { label: "Security Architecture", to: "/trust-control/security-architecture" },
-          { label: "Data Handling & Residency", to: "/trust-control/data-handling-residency" },
-        ],
-      },
-      {
-        head: "Deployment and sovereignty",
-        items: [{ label: "Sovereign Deployment", to: "/trust-control/sovereign-deployment" }],
-      },
-      {
-        head: "Evaluation",
-        items: [
-          {
-            label: "Request the Security Overview",
-            to: "/trust-control/request-security-overview",
-          },
         ],
       },
     ],
@@ -168,74 +95,59 @@ export const PRIMARY_NAV: PrimaryNav[] = [
   { label: "Insights", to: "/insights", matchPrefix: "/insights" },
 ];
 
-/** Seven published Phase 1 footer columns. */
 export const FOOTER_COLUMNS: NavColumn[] = [
   {
     head: "Platform",
     items: [
       { label: "ZHC Overview", to: "/platform" },
       { label: "How ZHC Works", to: "/platform/how-it-works" },
-      { label: "MADAM", to: "/platform/madam" },
+      { label: "MADAM — Agentic Governance", to: "/platform/madam" },
       { label: "Adopt ZHC", to: "/platform/adopt" },
+      { label: "Outcomes", to: "/outcomes" },
       { label: "Executive Briefing", to: "/executive-briefing" },
     ],
   },
   {
     head: "What ZHC Builds",
-    items: [{ label: "What ZHC Builds", to: "/what-zhc-builds" }],
+    items: [
+      { label: "New Applications", to: "/what-we-build", hash: "new-enterprise-applications" },
+      { label: "Modernization", to: "/what-we-build", hash: "application-modernization" },
+      { label: "Customer Portals", to: "/what-we-build", hash: "customer-facing-portals" },
+      { label: "Security & Compliance", to: "/what-we-build", hash: "security-compliance-platforms" },
+      { label: "Enterprise Agents & AI", to: "/what-we-build", hash: "enterprise-agents-ai" },
+    ],
   },
   {
     head: "CyberGRC",
     items: [
-      { label: "CyberGRC Overview", to: "/cybergrc" },
       { label: "Application Catalog", to: "/cybergrc/applications" },
-      { label: "How CyberGRC Works", to: "/cybergrc/how-it-works" },
-      { label: "CyberGRC Resources", to: "/cybergrc/resources" },
+      { label: "How CyberGRC Is Built", to: "/cybergrc", hash: "built-with-zhc" },
+      { label: "How it works", to: "/cybergrc/how-it-works" },
       { label: "Contact Sales", to: "/cybergrc/contact-sales" },
     ],
   },
   {
     head: "Trust & Control",
     items: [
-      { label: "Trust & Control Overview", to: "/trust-control" },
-      { label: "Security Architecture", to: "/trust-control/security-architecture" },
-      { label: "Sovereign Deployment", to: "/trust-control/sovereign-deployment" },
-      { label: "Deployment Architecture", to: "/trust-control/deployment-architecture" },
-      { label: "Data Handling & Residency", to: "/trust-control/data-handling-residency" },
-      { label: "Code Ownership & Portability", to: "/trust-control/code-ownership-portability" },
-      { label: "Request Security Overview", to: "/trust-control/request-security-overview" },
-    ],
-  },
-  {
-    head: "Outcomes",
-    items: [{ label: "Outcomes", to: "/outcomes" }],
-  },
-  {
-    head: "Insights",
-    items: [
-      { label: "Insights", to: "/insights" },
-      { label: "Autonomous Software Production", to: "/insights/autonomous-software-production" },
-      { label: "Agentic Governance", to: "/insights/agentic-governance" },
-      { label: "Enterprise Sovereignty", to: "/insights/enterprise-sovereignty" },
-      { label: "Executive Perspectives", to: "/insights/executive-perspectives" },
+      { label: "Sovereign Deployment", to: "/trust/sovereign-deployment" },
+      { label: "Security Architecture", to: "/trust/security-architecture" },
+      { label: "Data & Residency", to: "/trust/data-residency" },
+      { label: "Code Ownership", to: "/trust/code-ownership" },
+      { label: "Deployment Architecture", to: "/trust/deployment-architecture" },
+      { label: "Request the Security Overview", to: "/trust/security-overview" },
     ],
   },
   {
     head: "Company",
     items: [
       { label: "About Essert", to: "/company" },
-      { label: "Contact", to: "/contact" },
-      { label: "Privacy", to: "/legal/privacy" },
-      { label: "Terms", to: "/legal/terms" },
+      { label: "Leadership", to: "/company", hash: "leadership" },
+      { label: "Customers & Markets", to: "/company", hash: "markets" },
+      { label: "Intellectual Property", to: "/company", hash: "intellectual-property" },
+      { label: "Partners", to: "/company", hash: "partnerships" },
     ],
   },
 ];
-
-/**
- * Production story slugs are pending approved, measured stories. The footer shows
- * story rows only once the authoritative list is supplied — never placeholder rows.
- */
-export const PRODUCTION_STORY_LINKS: NavLink[] = [];
 
 export function isCyberGrcRoute(pathname: string) {
   return pathname === "/cybergrc" || pathname.startsWith("/cybergrc/");

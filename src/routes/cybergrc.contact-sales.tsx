@@ -6,7 +6,7 @@ const TITLE = "Contact CyberGRC Sales | Essert";
 const DESC =
   "Tell us which CyberGRC application or workflow you're evaluating, and our team will follow up directly.";
 
-export const Route = createFileRoute("/cybergrc/contact-sales/")({
+export const Route = createFileRoute("/cybergrc/contact-sales")({
   head: () => ({
     meta: [
       { title: TITLE },
