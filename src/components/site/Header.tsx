@@ -73,6 +73,7 @@ export function Header() {
   return (
     <>
     <header
+      ref={headerRef}
       className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur"
       onKeyDown={(e) => {
         if (e.key === "Escape") setOpenMenu(null);
