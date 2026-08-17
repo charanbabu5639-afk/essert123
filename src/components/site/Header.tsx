@@ -40,7 +40,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
   const cta = primaryCta(pathname);
 
   useEffect(() => {
@@ -56,13 +56,15 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  const scheduleClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
-  };
-  const cancelClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-  };
+  useEffect(() => {
+    if (!openMenu) return;
+    const onDown = (e: MouseEvent) => {
+      if (!headerRef.current?.contains(e.target as Node)) setOpenMenu(null);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [openMenu]);
+
 
   const activeColumns = PRIMARY_NAV.find((n) => n.label === openMenu)?.columns;
 
