@@ -23,16 +23,6 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
-                {col.head === "CyberGRC" ? (
-                  <li>
-                    <a
-                      href={LOGIN_URL}
-                      className="text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
-                    >
-                      Login
-                    </a>
-                  </li>
-                ) : null}
               </ul>
             </nav>
           ))}
