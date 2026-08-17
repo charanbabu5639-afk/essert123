@@ -18,13 +18,17 @@ export const PRIMARY_NAV: PrimaryNav[] = [
     matchPrefix: "/platform",
     columns: [
       {
-        head: "Core",
+        head: "ZHC Platform",
         items: [
           { label: "ZHC Overview", to: "/platform" },
           { label: "How ZHC Works", to: "/platform/how-it-works" },
-          { label: "MADAM — Agentic Governance", to: "/platform/madam" },
         ],
       },
+      {
+        head: "MADAM",
+        items: [{ label: "Agentic Governance", to: "/platform/madam" }],
+      },
+
       {
         head: "Engagement",
         items: [
@@ -71,7 +75,7 @@ export const PRIMARY_NAV: PrimaryNav[] = [
         head: "Control and ownership",
         items: [
           { label: "Security Architecture", to: "/trust/security-architecture" },
-          { label: "Data Handling & Residency", to: "/trust/data-residency" },
+          { label: "Data Handling", to: "/trust/data-residency" },
           { label: "Code Ownership & Portability", to: "/trust/code-ownership" },
         ],
       },
@@ -131,7 +135,7 @@ export const FOOTER_COLUMNS: NavColumn[] = [
     items: [
       { label: "Sovereign Deployment", to: "/trust/sovereign-deployment" },
       { label: "Security Architecture", to: "/trust/security-architecture" },
-      { label: "Data & Residency", to: "/trust/data-residency" },
+      { label: "Data Handling", to: "/trust/data-residency" },
       { label: "Code Ownership", to: "/trust/code-ownership" },
       { label: "Deployment Architecture", to: "/trust/deployment-architecture" },
       { label: "Request the Security Overview", to: "/trust/security-overview" },

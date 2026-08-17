@@ -40,7 +40,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
   const cta = primaryCta(pathname);
 
   useEffect(() => {
@@ -56,13 +56,15 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  const scheduleClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
-  };
-  const cancelClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-  };
+  useEffect(() => {
+    if (!openMenu) return;
+    const onDown = (e: MouseEvent) => {
+      if (!headerRef.current?.contains(e.target as Node)) setOpenMenu(null);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [openMenu]);
+
 
   const activeColumns = PRIMARY_NAV.find((n) => n.label === openMenu)?.columns;
 
@@ -71,6 +73,7 @@ export function Header() {
   return (
     <>
     <header
+      ref={headerRef}
       className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur"
       onKeyDown={(e) => {
         if (e.key === "Escape") setOpenMenu(null);
@@ -92,19 +95,11 @@ export function Header() {
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center">
               {PRIMARY_NAV.map((item) => (
-                <li
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => {
-                    cancelClose();
-                    setOpenMenu(item.columns ? item.label : null);
-                  }}
-                  onMouseLeave={scheduleClose}
-                >
+                <li key={item.label} className="relative">
                   <span className="flex items-center">
                     <Link
                       to={item.to}
-                      onFocus={() => setOpenMenu(item.columns ? item.label : null)}
+
                       className={cn(
                         "whitespace-nowrap border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
                         isActive(item.matchPrefix)
@@ -162,11 +157,8 @@ export function Header() {
       </Container>
 
       {activeColumns ? (
-        <div
-          className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover shadow-panel lg:block"
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}
-        >
+        <div className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover shadow-panel lg:block">
+
           <div className="mx-auto w-full max-w-[1280px] px-8 py-8 xl:px-12">
             <MegaMenuColumns columns={activeColumns} onNavigate={() => setOpenMenu(null)} />
           </div>
