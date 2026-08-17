@@ -53,7 +53,7 @@ function CyberGrc() {
 
       <Section id="built-with-zhc" tone="surface">
         <SectionHead
-          kicker="Produced by ZHC — not built by hand"
+          kicker="Built with ZHC — not built by hand"
           title="Every application in the catalog was produced by ZHC."
           lede="Every application in the catalog below was produced by ZHC, the same platform described on How ZHC Works — not engineered by a separate product team using different tools or a different process. That means every CyberGRC application passed through the same seven-stage lifecycle and the same MADAM governance as any custom system ZHC produces."
         />
@@ -91,9 +91,6 @@ function CyberGrc() {
             <CtaLink to="/cybergrc/applications">View All Applications</CtaLink>
             <CtaLink to="/cybergrc/contact-sales" variant="outline">
               Contact Sales
-            </CtaLink>
-            <CtaLink to="/cybergrc/resources" variant="outline">
-              CyberGRC Resources
             </CtaLink>
           </div>
         </div>

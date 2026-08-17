@@ -51,7 +51,7 @@ function Home() {
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <CtaLink to="/executive-briefing">Book an Executive Briefing</CtaLink>
-                <CtaLink to="/what-zhc-builds" variant="outline">
+                <CtaLink to="/what-we-build" variant="outline">
                   See What ZHC Builds
                 </CtaLink>
               </div>
@@ -122,7 +122,7 @@ function Home() {
             ]}
           />
           <div className="mt-8">
-            <ArrowLink to="/what-zhc-builds">See what ZHC builds in detail</ArrowLink>
+            <ArrowLink to="/what-we-build">See what ZHC builds in detail</ArrowLink>
           </div>
         </div>
       </Section>
@@ -166,7 +166,7 @@ function Home() {
           lede="Security architecture, data handling and residency, code ownership and portability, and a deployment path that runs from an Essert-hosted environment to infrastructure you fully control. No capability here is described as available before it is available."
         />
         <div className="mt-8">
-          <ArrowLink to="/trust-control">Review enterprise control</ArrowLink>
+          <ArrowLink to="/trust">Review enterprise control</ArrowLink>
         </div>
       </Section>
 

@@ -14,7 +14,7 @@ const TITLE = "Sovereign Deployment — a deployment continuum | Essert";
 const DESC =
   "Sovereignty is a control posture, not a synonym for on-premises. ZHC's continuum runs from Essert Cloud to customer-controlled infrastructure.";
 
-export const Route = createFileRoute("/trust-control/sovereign-deployment")({
+export const Route = createFileRoute("/trust/sovereign-deployment")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -33,7 +33,7 @@ function SovereignPage() {
         kicker="Trust & Control → Sovereign Deployment"
         title="A deployment continuum, not a single option."
         lede="Sovereignty is a control posture, not a synonym for on-premises. ZHC's deployment continuum runs from an Essert-hosted environment to infrastructure the customer fully controls."
-        actions={<CtaLink to="/trust-control/request-security-overview">Request the Security Overview</CtaLink>}
+        actions={<CtaLink to="/trust/security-overview">Request the Security Overview</CtaLink>}
       />
 
       <Section bordered={false}>
@@ -98,7 +98,7 @@ function SovereignPage() {
 
       <ClosingCta
         title="Match the continuum to your environment."
-        to="/trust-control/request-security-overview"
+        to="/trust/security-overview"
         label="Request the Security Overview"
       />
     </>

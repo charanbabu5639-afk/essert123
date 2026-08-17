@@ -78,7 +78,7 @@ function HowItWorks() {
           lede="Detailed architecture, control mappings, and security-review materials are not published here. They are shared directly as part of the executive briefing process, matched to the specific enterprise environment under discussion. If you need those materials before a briefing, request them directly."
         />
         <div className="mt-8">
-          <ArrowLink to="/trust-control/request-security-overview">Request the Security Overview</ArrowLink>
+          <ArrowLink to="/trust/security-overview">Request the Security Overview</ArrowLink>
         </div>
       </Section>
 

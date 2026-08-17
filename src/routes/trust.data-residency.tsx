@@ -15,7 +15,7 @@ const TITLE = "Data Handling & Residency — where your data lives | Essert";
 const DESC =
   "Data residency and handling are governed by the deployment model chosen for the engagement and by explicit controls, not by default platform behavior.";
 
-export const Route = createFileRoute("/trust-control/data-handling-residency")({
+export const Route = createFileRoute("/trust/data-residency")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -34,7 +34,7 @@ function DataResidency() {
         kicker="Trust & Control → Data Handling & Residency"
         title="Where your data lives is a decision you make, not one we make for you."
         lede="Data residency and handling are governed by the deployment model chosen for the engagement, and by explicit controls, not by default platform behavior."
-        actions={<CtaLink to="/trust-control/request-security-overview">Request the Security Overview</CtaLink>}
+        actions={<CtaLink to="/trust/security-overview">Request the Security Overview</CtaLink>}
       />
 
       <Section bordered={false}>
@@ -97,7 +97,7 @@ function DataResidency() {
 
       <ClosingCta
         title="Confirm residency for your jurisdiction."
-        to="/trust-control/request-security-overview"
+        to="/trust/security-overview"
         label="Request the Security Overview"
       />
     </>
