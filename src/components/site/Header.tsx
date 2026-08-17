@@ -154,11 +154,8 @@ export function Header() {
       </Container>
 
       {activeColumns ? (
-        <div
-          className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover shadow-panel lg:block"
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}
-        >
+        <div className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover shadow-panel lg:block">
+
           <div className="mx-auto w-full max-w-[1280px] px-8 py-8 xl:px-12">
             <MegaMenuColumns columns={activeColumns} onNavigate={() => setOpenMenu(null)} />
           </div>
