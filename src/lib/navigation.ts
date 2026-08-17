@@ -18,13 +18,17 @@ export const PRIMARY_NAV: PrimaryNav[] = [
     matchPrefix: "/platform",
     columns: [
       {
-        head: "Core",
+        head: "ZHC Platform",
         items: [
           { label: "ZHC Overview", to: "/platform" },
           { label: "How ZHC Works", to: "/platform/how-it-works" },
-          { label: "MADAM — Agentic Governance", to: "/platform/madam" },
         ],
       },
+      {
+        head: "MADAM",
+        items: [{ label: "Agentic Governance", to: "/platform/madam" }],
+      },
+
       {
         head: "Engagement",
         items: [
