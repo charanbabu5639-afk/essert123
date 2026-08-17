@@ -1,97 +1,36 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Container, CtaLink } from "./primitives";
 import { Logo } from "./Logo";
-import { PRIMARY_NAV, primaryCta, type MegaMenu, type NavGroup, type NavLink } from "@/lib/navigation";
+import { PRIMARY_NAV, primaryCta, type NavColumn } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
-function MenuLink({
-  item,
-  onNavigate,
-  size = "base",
-}: {
-  item: NavLink;
-  onNavigate: () => void;
-  size?: "base" | "sm";
-}) {
+function MegaMenuColumns({ columns, onNavigate }: { columns: NavColumn[]; onNavigate: () => void }) {
   return (
-    <Link
-      to={item.to}
-      {...(item.hash ? { hash: item.hash } : {})}
-      onClick={onNavigate}
-      className="group block py-2"
+    <div
+      className="grid gap-8"
+      style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0,1fr))` }}
     >
-      <span
-        className={cn(
-          "flex items-center gap-1.5 font-semibold text-foreground transition-colors group-hover:text-brand",
-          size === "base" ? "text-[16px]" : "text-[15px]",
-        )}
-      >
-        {item.label}
-        <ArrowRight className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
-      </span>
-      {item.desc ? (
-        <span className="mt-0.5 block text-[12.5px] leading-snug text-muted-foreground">
-          {item.desc}
-        </span>
-      ) : null}
-    </Link>
-  );
-}
-
-function MegaGroup({ group, onNavigate }: { group: NavGroup; onNavigate: () => void }) {
-  return (
-    <div>
-      <p className="kicker mb-5">{group.head}</p>
-      <div className="space-y-3">
-        {group.items.map((item) => (
-          <MenuLink key={item.label + item.to + (item.hash ?? "")} item={item} onNavigate={onNavigate} />
-        ))}
-      </div>
-      {group.sub ? (
-        <div className="mt-7 border-t border-border pt-5">
-          <p className="kicker mb-3 text-foreground/70">{group.sub.head}</p>
-          <div className="space-y-3 pl-4 border-l border-brand/40">
-            {group.sub.items.map((item) => (
-              <MenuLink key={item.label} item={item} onNavigate={onNavigate} size="sm" />
+      {columns.map((col, i) => (
+        <div key={col.head || `col-${i}`}>
+          {col.head ? <p className="kicker mb-4">{col.head}</p> : <span className="mb-4 block h-4" />}
+          <ul className="space-y-1">
+            {col.items.map((item) => (
+              <li key={item.label}>
+                <Link
+                  to={item.to}
+                  {...(item.hash ? { hash: item.hash } : {})}
+                  onClick={onNavigate}
+                  className="block rounded-md px-3 py-2 -mx-3 text-sm transition-colors hover:bg-secondary"
+                >
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      ) : null}
-    </div>
-  );
-}
-
-function MegaPanel({ mega, onNavigate }: { mega: MegaMenu; onNavigate: () => void }) {
-  return (
-    <div className="mx-auto w-full max-w-[1360px] px-10 py-11 xl:px-14">
-      <div className="flex flex-col gap-2">
-        <p className="kicker">{mega.kicker}</p>
-        <h2 className="text-2xl font-semibold tracking-tight">{mega.title}</h2>
-        <p className="max-w-2xl text-sm text-muted-foreground">{mega.lede}</p>
-      </div>
-
-      <div className="mt-9 grid gap-x-16 gap-y-10 border-t border-border pt-9 md:grid-cols-2 lg:grid-cols-[1.15fr_1fr_1fr]">
-        {mega.groups.map((group, i) => (
-          <div
-            key={group.head}
-            className={cn(i > 0 && "lg:border-l lg:border-border lg:pl-12")}
-          >
-            <MegaGroup group={group} onNavigate={onNavigate} />
-            {mega.cta && i === mega.groups.length - 1 ? (
-              <CtaLink
-                to={mega.cta.to}
-                className="mt-7 inline-flex"
-                onClick={onNavigate}
-              >
-                {mega.cta.label}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </CtaLink>
-            ) : null}
-          </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
 }
@@ -101,7 +40,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
-  const headerRef = useRef<HTMLElement | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cta = primaryCta(pathname);
 
   useEffect(() => {
@@ -117,98 +56,125 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  useEffect(() => {
-    if (!openMenu) return;
-    const onDown = (e: MouseEvent) => {
-      if (!headerRef.current?.contains(e.target as Node)) setOpenMenu(null);
-    };
-    document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
-  }, [openMenu]);
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
+  };
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
 
-  const activeMega = PRIMARY_NAV.find((n) => n.label === openMenu)?.mega;
+  const activeItem = PRIMARY_NAV.find((n) => n.label === openMenu);
+  const activeColumns = activeItem?.columns;
+
   const isActive = (prefix: string) => pathname === prefix || pathname.startsWith(prefix + "/");
 
   return (
     <>
-      <header
-        ref={headerRef}
-        className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur"
-        onKeyDown={(e) => {
-          if (e.key === "Escape") setOpenMenu(null);
-        }}
-      >
-        <Container>
-          <div className="flex h-[68px] items-center justify-between gap-6">
+    <header
+      className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur"
+      onKeyDown={(e) => {
+        if (e.key === "Escape") setOpenMenu(null);
+      }}
+    >
+      <Container>
+        <div className="flex h-[76px] items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
             <Link to="/" aria-label="Essert home" className="shrink-0">
               <Logo />
             </Link>
+            <span className="hidden border-l border-border pl-4 text-xs leading-tight text-muted-foreground 2xl:block">
+              ZHC — Zero Human Coding™
+              <br />
+              Autonomous software production
+            </span>
+          </div>
 
-            <nav aria-label="Primary" className="hidden lg:block">
-              <ul className="flex items-center">
-                {PRIMARY_NAV.map((item) => (
-                  <li key={item.label} className="relative">
-                    <span className="flex items-center">
-                      <Link
-                        to={item.to}
-                        className={cn(
-                          "whitespace-nowrap border-b-2 px-3 py-[22px] text-sm transition-colors",
-                          isActive(item.matchPrefix)
-                            ? "border-brand font-semibold text-foreground"
-                            : "border-transparent font-medium text-foreground/75 hover:text-foreground",
-                        )}
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center">
+              {PRIMARY_NAV.map((item) => (
+                <li
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => {
+                    cancelClose();
+                    setOpenMenu(item.columns ? item.label : null);
+                  }}
+                  onMouseLeave={scheduleClose}
+                >
+                  <span className="flex items-center">
+                    <Link
+                      to={item.to}
+                      onFocus={() => setOpenMenu(item.columns ? item.label : null)}
+                      className={cn(
+                        "whitespace-nowrap border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
+                        isActive(item.matchPrefix)
+                          ? "border-foreground text-foreground"
+                          : "border-transparent text-foreground/75 hover:text-foreground",
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.columns ? (
+                      <button
+                        type="button"
+                        aria-label={`${item.label} menu`}
+                        aria-expanded={openMenu === item.label}
+                        onClick={() =>
+                          setOpenMenu(openMenu === item.label ? null : item.label)
+                        }
+                        className="-ml-1 py-[26px] pr-1 text-muted-foreground transition-colors hover:text-foreground"
                       >
-                        {item.label}
-                      </Link>
-                      {item.mega ? (
-                        <button
-                          type="button"
-                          aria-label={`${item.label} menu`}
-                          aria-expanded={openMenu === item.label}
-                          onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
-                          className="-ml-1 py-[22px] pr-1 text-muted-foreground transition-colors hover:text-foreground"
-                        >
-                          <ChevronDown
-                            className={cn(
-                              "h-3.5 w-3.5 transition-transform duration-200",
-                              openMenu === item.label && "rotate-180 text-brand",
-                            )}
-                          />
-                        </button>
-                      ) : null}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                        <ChevronDown
+                          className={cn(
+                            "h-3.5 w-3.5 transition-transform duration-200",
+                            openMenu === item.label && "rotate-180",
+                          )}
+                        />
+                      </button>
+                    ) : null}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <div className="flex items-center gap-3">
-              <CtaLink to={cta.to} className="hidden whitespace-nowrap lg:inline-flex">
-                {cta.label}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </CtaLink>
-              <button
-                type="button"
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                aria-expanded={mobileOpen}
-                onClick={() => setMobileOpen((v) => !v)}
-                className="grid h-10 w-10 place-items-center rounded-sm border border-border lg:hidden"
-              >
-                {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-              </button>
-            </div>
-          </div>
-        </Container>
+          <div className="flex items-center gap-3">
+            <CtaLink to={cta.to} className="hidden whitespace-nowrap px-4 py-2.5 lg:inline-flex">
+              {cta.label}
+            </CtaLink>
 
-        {activeMega ? (
-          <div className="menu-panel absolute inset-x-0 top-full hidden border-y border-border bg-popover lg:block">
-            <MegaPanel mega={activeMega} onNavigate={() => setOpenMenu(null)} />
+            <button
+              type="button"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-md border border-border lg:hidden"
+            >
+              {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
-        ) : null}
-      </header>
+        </div>
+      </Container>
+
+      {activeColumns ? (
+        <div
+          className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover shadow-panel lg:block"
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
+        >
+          <div className="mx-auto w-full max-w-[1280px] px-8 py-8 xl:px-12">
+            {activeItem?.blurb ? (
+              <p className="annot mb-6 max-w-2xl">{activeItem.blurb}</p>
+            ) : null}
+            <MegaMenuColumns columns={activeColumns} onNavigate={() => setOpenMenu(null)} />
+          </div>
+        </div>
+      ) : null}
+    </header>
 
       {mobileOpen ? (
-        <div className="fixed inset-x-0 bottom-0 top-[68px] z-50 flex flex-col bg-background lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-[76px] z-50 flex flex-col bg-background lg:hidden">
           <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-5 pb-6">
             <ul className="divide-y divide-border">
               {PRIMARY_NAV.map((item) => (
@@ -221,7 +187,7 @@ export function Header() {
                     >
                       {item.label}
                     </Link>
-                    {item.mega ? (
+                    {item.columns ? (
                       <button
                         type="button"
                         aria-label={`Expand ${item.label}`}
@@ -234,42 +200,31 @@ export function Header() {
                         <ChevronDown
                           className={cn(
                             "h-4 w-4 transition-transform duration-200",
-                            mobileGroup === item.label && "rotate-180 text-brand",
+                            mobileGroup === item.label && "rotate-180",
                           )}
                         />
                       </button>
                     ) : null}
                   </div>
-                  {item.mega && mobileGroup === item.label ? (
-                    <div className="space-y-7 pb-6">
-                      {item.mega.groups.map((group) => (
-                        <div key={group.head}>
-                          <p className="kicker mb-3">{group.head}</p>
-                          <div className="space-y-2">
-                            {group.items.map((sub) => (
-                              <MenuLink
-                                key={sub.label + sub.to + (sub.hash ?? "")}
-                                item={sub}
-                                onNavigate={() => setMobileOpen(false)}
-                                size="sm"
-                              />
+                  {item.columns && mobileGroup === item.label ? (
+                    <div className="space-y-5 pb-5 pl-1">
+                      {(item.mobile ?? item.columns).map((col, i) => (
+                        <div key={col.head || `m-col-${i}`}>
+                          {col.head ? <p className="kicker mb-2">{col.head}</p> : null}
+                          <ul className="space-y-1">
+                            {col.items.map((sub) => (
+                              <li key={sub.label}>
+                                <Link
+                                  to={sub.to}
+                                  {...(sub.hash ? { hash: sub.hash } : {})}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block py-1.5 text-sm text-muted-foreground"
+                                >
+                                  {sub.label}
+                                </Link>
+                              </li>
                             ))}
-                          </div>
-                          {group.sub ? (
-                            <div className="mt-4">
-                              <p className="kicker mb-2 text-foreground/70">{group.sub.head}</p>
-                              <div className="space-y-2 border-l border-brand/40 pl-4">
-                                {group.sub.items.map((sub) => (
-                                  <MenuLink
-                                    key={sub.label}
-                                    item={sub}
-                                    onNavigate={() => setMobileOpen(false)}
-                                    size="sm"
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          ) : null}
+                          </ul>
                         </div>
                       ))}
                     </div>
@@ -281,7 +236,6 @@ export function Header() {
           <div className="border-t border-border p-5">
             <CtaLink to={cta.to} className="w-full">
               {cta.label}
-              <ArrowRight className="ml-2 h-4 w-4" />
             </CtaLink>
           </div>
         </div>

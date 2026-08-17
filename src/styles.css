@@ -5,9 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Essert design system — monochrome enterprise.
- * All colors in oklch. No brand color beyond neutral scale + near-black.
+ * Essert design system — Brand Foundation, Direction B ("Press").
+ * Paper #FAF9F5 ground, Ink #060810 type/rule, neutral scale for section rhythm.
+ * Cobalt #0067FD (data emphasis / one CTA moment) and Fuchsia #E4005C (single-word
+ * or single-data-point emphasis) are punctuation only: never fields, never gradients.
  */
+
 
 @theme inline {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
@@ -45,10 +48,9 @@
   --color-ink-foreground: var(--ink-foreground);
   --color-ink-muted: var(--ink-muted);
   --color-ink-border: var(--ink-border);
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-hover);
-  --color-brand-foreground: var(--brand-foreground);
-
+  --color-paper: var(--paper);
+  --color-cobalt: var(--cobalt);
+  --color-fuchsia: var(--fuchsia);
 
   --shadow-panel: 0 1px 0 0 oklch(0 0 0 / 6%), 0 24px 48px -24px oklch(0 0 0 / 18%);
   --shadow-raise: 0 1px 2px 0 oklch(0 0 0 / 6%);
@@ -57,35 +59,43 @@
 :root {
   --radius: 0.5rem;
 
-  /* neutral scale */
-  --n-0: oklch(1 0 0);
-  --n-50: oklch(0.978 0.003 84);
-  --n-100: oklch(0.962 0.003 84);
-  --n-200: oklch(0.925 0.003 84);
-  --n-300: oklch(0.868 0.003 84);
-  --n-400: oklch(0.708 0.003 84);
-  --n-500: oklch(0.51 0.003 84);
-  --n-700: oklch(0.31 0.003 84);
-  --n-900: oklch(0.145 0 0);
+  /* brand pair — Paper ground, Ink type */
+  --paper: #faf9f5;
+  --ink-900: #060810;
 
-  --background: var(--n-0);
-  --foreground: var(--n-900);
+  /* neutral scale */
+  --n-0: #ffffff;
+  --n-50: #f7f7f5;
+  --n-100: #f2f2f0;
+  --n-200: #e7e7e4;
+  --n-300: #d6d6d2;
+  --n-400: #a3a3a0;
+  --n-500: #6b6b68;
+  --n-700: #3a3a38;
+  --n-900: var(--ink-900);
+
+  /* accents — punctuation only */
+  --cobalt: #0067fd;
+  --fuchsia: #e4005c;
+
+  --background: var(--paper);
+  --foreground: var(--ink-900);
   --surface: var(--n-50);
   --surface-2: var(--n-100);
 
   --card: var(--n-0);
-  --card-foreground: var(--n-900);
-  --popover: var(--n-0);
-  --popover-foreground: var(--n-900);
+  --card-foreground: var(--ink-900);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink-900);
 
-  --primary: var(--n-900);
-  --primary-foreground: var(--n-0);
+  --primary: var(--ink-900);
+  --primary-foreground: var(--paper);
   --secondary: var(--n-100);
-  --secondary-foreground: var(--n-900);
+  --secondary-foreground: var(--ink-900);
   --muted: var(--n-100);
   --muted-foreground: var(--n-500);
   --accent: var(--n-100);
-  --accent-foreground: var(--n-900);
+  --accent-foreground: var(--ink-900);
   --destructive: oklch(0.55 0.19 27);
   --destructive-foreground: var(--n-0);
 
@@ -94,16 +104,11 @@
   --input: var(--n-300);
   --ring: var(--n-500);
 
-  /* electric blue accent */
-  --brand: oklch(0.585 0.219 258.4);
-  --brand-hover: oklch(0.628 0.208 257.6);
-  --brand-foreground: oklch(1 0 0);
-
   /* dark (footer / inverted) surfaces */
-  --ink: oklch(0.11 0 0);
-  --ink-foreground: oklch(0.985 0 0);
-  --ink-muted: oklch(0.72 0 0);
-  --ink-border: oklch(1 0 0 / 12%);
+  --ink: var(--ink-900);
+  --ink-foreground: var(--paper);
+  --ink-muted: #a3a3a0;
+  --ink-border: rgb(255 255 255 / 12%);
 }
 
 
@@ -246,4 +251,50 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---- Direction B structural devices ---- */
+
+/* Drafting-style annotation: mono, small, uppercase-ish metadata. */
+@utility annot {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--color-muted-foreground);
+}
+
+/* Folio numbering — section numbers like 01 / 02. */
+@utility folio {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-muted-foreground);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible baseline under display/section headlines — structure, never decoration. */
+@utility baseline-rule {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+/* Exposed grid field: faint vertical column rules. */
+@utility grid-field {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border) 0 1px,
+    transparent 1px calc(100% / 12)
+  );
+}
+
+/* Data emphasis — Cobalt, one moment per view. */
+@utility data-accent {
+  color: var(--color-cobalt);
+}
+
+/* Rarest emphasis — Fuchsia, one data point or single word per view. */
+@utility mark-accent {
+  color: var(--color-fuchsia);
 }
