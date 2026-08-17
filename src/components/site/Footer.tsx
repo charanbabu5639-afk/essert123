@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Container } from "./primitives";
 import { Logo } from "./Logo";
-import { FOOTER_COLUMNS, LOGIN_URL } from "@/lib/navigation";
+import { FOOTER_COLUMNS } from "@/lib/navigation";
 
 export function Footer() {
   return (
