@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Container } from "./primitives";
 import { Logo } from "./Logo";
-import { FOOTER_COLUMNS, LOGIN_URL } from "@/lib/navigation";
+import { FOOTER_COLUMNS } from "@/lib/navigation";
 
 export function Footer() {
   return (
@@ -23,16 +23,6 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
-                {col.head === "CyberGRC" ? (
-                  <li>
-                    <a
-                      href={LOGIN_URL}
-                      className="text-sm text-ink-foreground/85 transition-colors hover:text-ink-foreground"
-                    >
-                      Login
-                    </a>
-                  </li>
-                ) : null}
               </ul>
             </nav>
           ))}

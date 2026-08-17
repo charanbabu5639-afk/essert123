@@ -103,7 +103,7 @@ export function PageHero({
 }
 
 const btnBase =
-  "inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition-all duration-200";
+  "group inline-flex items-center justify-center rounded-sm px-6 py-3 text-[13px] font-semibold uppercase tracking-[0.08em] transition-all duration-200";
 
 export function CtaLink({
   to,
@@ -111,23 +111,25 @@ export function CtaLink({
   variant = "primary",
   children,
   className,
+  onClick,
 }: {
   to: string;
   hash?: string;
   variant?: "primary" | "outline" | "ink";
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
     <Link
       to={to}
       {...(hash ? { hash } : {})}
+      onClick={onClick}
       className={cn(
         btnBase,
-        variant === "primary" &&
-          "bg-primary text-primary-foreground hover:-translate-y-px hover:bg-foreground/90",
+        variant === "primary" && "bg-brand text-brand-foreground hover:bg-brand-hover",
         variant === "outline" &&
-          "border border-border-strong bg-background text-foreground hover:bg-secondary",
+          "border border-border-strong bg-transparent text-foreground hover:border-brand hover:text-brand",
         variant === "ink" && "bg-ink-foreground text-ink hover:opacity-90",
         className,
       )}
@@ -136,6 +138,7 @@ export function CtaLink({
     </Link>
   );
 }
+
 
 export function ArrowLink({
   to,
