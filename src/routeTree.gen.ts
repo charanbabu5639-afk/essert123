@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BookADemoRouteImport } from './routes/book-a-demo'
 import { Route as CompanyRouteImport } from './routes/company'
 import { Route as ExecutiveBriefingRouteImport } from './routes/executive-briefing'
 import { Route as LoginPlaceholderRouteImport } from './routes/login-placeholder'
@@ -45,6 +46,11 @@ import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './route
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookADemoRoute = BookADemoRouteImport.update({
+  id: '/book-a-demo',
+  path: '/book-a-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompanyRoute = CompanyRouteImport.update({
@@ -213,6 +219,7 @@ const CybergrcApplicationsApplicationSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
@@ -247,6 +254,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
@@ -282,6 +290,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
@@ -318,6 +327,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/book-a-demo'
     | '/company'
     | '/executive-briefing'
     | '/login-placeholder'
@@ -352,6 +362,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/book-a-demo'
     | '/company'
     | '/executive-briefing'
     | '/login-placeholder'
@@ -386,6 +397,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/book-a-demo'
     | '/company'
     | '/executive-briefing'
     | '/login-placeholder'
@@ -421,6 +433,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookADemoRoute: typeof BookADemoRoute
   CompanyRoute: typeof CompanyRoute
   ExecutiveBriefingRoute: typeof ExecutiveBriefingRoute
   LoginPlaceholderRoute: typeof LoginPlaceholderRoute
@@ -461,6 +474,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-a-demo': {
+      id: '/book-a-demo'
+      path: '/book-a-demo'
+      fullPath: '/book-a-demo'
+      preLoaderRoute: typeof BookADemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/company': {
@@ -685,6 +705,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookADemoRoute: BookADemoRoute,
   CompanyRoute: CompanyRoute,
   ExecutiveBriefingRoute: ExecutiveBriefingRoute,
   LoginPlaceholderRoute: LoginPlaceholderRoute,
