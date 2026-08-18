@@ -34,6 +34,7 @@ import { Route as TrustDeploymentArchitectureRouteImport } from './routes/trust.
 import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.security-architecture'
 import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
 import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
+import { Route as ZhcIndexRouteImport } from './routes/zhc.index'
 import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
 import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 
@@ -168,6 +169,11 @@ const TrustSovereignDeploymentRoute =
     path: '/trust/sovereign-deployment',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ZhcIndexRoute = ZhcIndexRouteImport.update({
+  id: '/zhc/',
+  path: '/zhc/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CybergrcApplicationsIndexRoute =
   CybergrcApplicationsIndexRouteImport.update({
     id: '/cybergrc/applications/',
@@ -207,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
+  '/zhc/': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
   '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
@@ -236,6 +243,7 @@ export interface FileRoutesByTo {
   '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
   '/trust': typeof TrustIndexRoute
+  '/zhc': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
   '/cybergrc/applications': typeof CybergrcApplicationsIndexRoute
 }
@@ -266,6 +274,7 @@ export interface FileRoutesById {
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/trust/': typeof TrustIndexRoute
+  '/zhc/': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
   '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
@@ -297,6 +306,7 @@ export interface FileRouteTypes {
     | '/outcomes/'
     | '/platform/'
     | '/trust/'
+    | '/zhc/'
     | '/cybergrc/applications/$applicationSlug'
     | '/cybergrc/applications/'
   fileRoutesByTo: FileRoutesByTo
@@ -326,6 +336,7 @@ export interface FileRouteTypes {
     | '/outcomes'
     | '/platform'
     | '/trust'
+    | '/zhc'
     | '/cybergrc/applications/$applicationSlug'
     | '/cybergrc/applications'
   id:
@@ -355,6 +366,7 @@ export interface FileRouteTypes {
     | '/outcomes/'
     | '/platform/'
     | '/trust/'
+    | '/zhc/'
     | '/cybergrc/applications/$applicationSlug'
     | '/cybergrc/applications/'
   fileRoutesById: FileRoutesById
@@ -385,6 +397,7 @@ export interface RootRouteChildren {
   OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
+  ZhcIndexRoute: typeof ZhcIndexRoute
   CybergrcApplicationsApplicationSlugRoute: typeof CybergrcApplicationsApplicationSlugRoute
   CybergrcApplicationsIndexRoute: typeof CybergrcApplicationsIndexRoute
 }
@@ -566,6 +579,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrustSovereignDeploymentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zhc/': {
+      id: '/zhc/'
+      path: '/zhc'
+      fullPath: '/zhc/'
+      preLoaderRoute: typeof ZhcIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cybergrc/applications/': {
       id: '/cybergrc/applications/'
       path: '/cybergrc/applications'
@@ -610,6 +630,7 @@ const rootRouteChildren: RootRouteChildren = {
   OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
+  ZhcIndexRoute: ZhcIndexRoute,
   CybergrcApplicationsApplicationSlugRoute:
     CybergrcApplicationsApplicationSlugRoute,
   CybergrcApplicationsIndexRoute: CybergrcApplicationsIndexRoute,
