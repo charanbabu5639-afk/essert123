@@ -35,6 +35,7 @@ import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.se
 import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
 import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
 import { Route as ZhcIndexRouteImport } from './routes/zhc.index'
+import { Route as ZhcEnterpriseRouteImport } from './routes/zhc.enterprise'
 import { Route as ZhcHowItWorksRouteImport } from './routes/zhc.how-it-works'
 import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
 import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
@@ -175,6 +176,11 @@ const ZhcIndexRoute = ZhcIndexRouteImport.update({
   path: '/zhc/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhcEnterpriseRoute = ZhcEnterpriseRouteImport.update({
+  id: '/zhc/enterprise',
+  path: '/zhc/enterprise',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ZhcHowItWorksRoute = ZhcHowItWorksRouteImport.update({
   id: '/zhc/how-it-works',
   path: '/zhc/how-it-works',
@@ -214,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/zhc/enterprise': typeof ZhcEnterpriseRoute
   '/zhc/how-it-works': typeof ZhcHowItWorksRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
@@ -245,6 +252,7 @@ export interface FileRoutesByTo {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/zhc/enterprise': typeof ZhcEnterpriseRoute
   '/zhc/how-it-works': typeof ZhcHowItWorksRoute
   '/cybergrc': typeof CybergrcIndexRoute
   '/insights': typeof InsightsIndexRoute
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/zhc/enterprise': typeof ZhcEnterpriseRoute
   '/zhc/how-it-works': typeof ZhcHowItWorksRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
@@ -310,6 +319,7 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/zhc/enterprise'
     | '/zhc/how-it-works'
     | '/cybergrc/'
     | '/insights/'
@@ -341,6 +351,7 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/zhc/enterprise'
     | '/zhc/how-it-works'
     | '/cybergrc'
     | '/insights'
@@ -372,6 +383,7 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/zhc/enterprise'
     | '/zhc/how-it-works'
     | '/cybergrc/'
     | '/insights/'
@@ -404,6 +416,7 @@ export interface RootRouteChildren {
   TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
   TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
+  ZhcEnterpriseRoute: typeof ZhcEnterpriseRoute
   ZhcHowItWorksRoute: typeof ZhcHowItWorksRoute
   CybergrcIndexRoute: typeof CybergrcIndexRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
@@ -599,6 +612,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhcIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zhc/enterprise': {
+      id: '/zhc/enterprise'
+      path: '/zhc/enterprise'
+      fullPath: '/zhc/enterprise'
+      preLoaderRoute: typeof ZhcEnterpriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/zhc/how-it-works': {
       id: '/zhc/how-it-works'
       path: '/zhc/how-it-works'
@@ -645,6 +665,7 @@ const rootRouteChildren: RootRouteChildren = {
   TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
   TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
+  ZhcEnterpriseRoute: ZhcEnterpriseRoute,
   ZhcHowItWorksRoute: ZhcHowItWorksRoute,
   CybergrcIndexRoute: CybergrcIndexRoute,
   InsightsIndexRoute: InsightsIndexRoute,
