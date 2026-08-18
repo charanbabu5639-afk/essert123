@@ -27,6 +27,7 @@ import { Route as PlatformIndexRouteImport } from './routes/platform.index'
 import { Route as PlatformAdoptRouteImport } from './routes/platform.adopt'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
 import { Route as PlatformMadamRouteImport } from './routes/platform.madam'
+import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as TrustIndexRouteImport } from './routes/trust.index'
 import { Route as TrustCodeOwnershipRouteImport } from './routes/trust.code-ownership'
 import { Route as TrustDataResidencyRouteImport } from './routes/trust.data-residency'
@@ -134,6 +135,11 @@ const PlatformMadamRoute = PlatformMadamRouteImport.update({
   path: '/platform/madam',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
+  id: '/solutions/',
+  path: '/solutions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrustIndexRoute = TrustIndexRouteImport.update({
   id: '/trust/',
   path: '/trust/',
@@ -233,6 +239,7 @@ export interface FileRoutesByFullPath {
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
   '/trust/': typeof TrustIndexRoute
   '/zhc/': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
@@ -266,6 +273,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
   '/trust': typeof TrustIndexRoute
   '/zhc': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
@@ -300,6 +308,7 @@ export interface FileRoutesById {
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
   '/trust/': typeof TrustIndexRoute
   '/zhc/': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
@@ -335,6 +344,7 @@ export interface FileRouteTypes {
     | '/insights/'
     | '/outcomes/'
     | '/platform/'
+    | '/solutions/'
     | '/trust/'
     | '/zhc/'
     | '/cybergrc/applications/$applicationSlug'
@@ -368,6 +378,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/outcomes'
     | '/platform'
+    | '/solutions'
     | '/trust'
     | '/zhc'
     | '/cybergrc/applications/$applicationSlug'
@@ -401,6 +412,7 @@ export interface FileRouteTypes {
     | '/insights/'
     | '/outcomes/'
     | '/platform/'
+    | '/solutions/'
     | '/trust/'
     | '/zhc/'
     | '/cybergrc/applications/$applicationSlug'
@@ -435,6 +447,7 @@ export interface RootRouteChildren {
   InsightsIndexRoute: typeof InsightsIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
   ZhcIndexRoute: typeof ZhcIndexRoute
   CybergrcApplicationsApplicationSlugRoute: typeof CybergrcApplicationsApplicationSlugRoute
@@ -569,6 +582,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformMadamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/solutions'
+      fullPath: '/solutions/'
+      preLoaderRoute: typeof SolutionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/trust/': {
       id: '/trust/'
       path: '/trust'
@@ -692,6 +712,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsIndexRoute: InsightsIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
   ZhcIndexRoute: ZhcIndexRoute,
   CybergrcApplicationsApplicationSlugRoute:
