@@ -197,7 +197,7 @@ export function ProductionLine({
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            const i = Number((e.target as HTMLElement).dataset.i);
+            const i = Number((e.target as HTMLElement).dataset['i']);
             setVisible((v) => Math.max(v, i + 1));
           }
         });
