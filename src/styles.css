@@ -5,19 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Essert design system — monochrome enterprise.
- * All colors in oklch. No brand color beyond neutral scale + near-black.
+ * ESSERT — DISCIPLINED BRUTALISM
+ * Ink #060810 · Paper #FAF9F5 · Cobalt #0067FD · Fuchsia #E4005C
+ * One display/system typeface (Archivo) + one mono (JetBrains Mono).
+ * Dark-first. Light editorial surfaces are opt-in via .surface-paper.
  */
 
 @theme inline {
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-sm: 0px;
+  --radius-md: 1px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -41,83 +44,90 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
-  --color-ink: var(--ink);
-  --color-ink-foreground: var(--ink-foreground);
-  --color-ink-muted: var(--ink-muted);
-  --color-ink-border: var(--ink-border);
 
-  --shadow-panel: 0 1px 0 0 oklch(0 0 0 / 6%), 0 24px 48px -24px oklch(0 0 0 / 18%);
-  --shadow-raise: 0 1px 2px 0 oklch(0 0 0 / 6%);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-cobalt: var(--cobalt);
+  --color-fuchsia: var(--fuchsia);
+
+  /* legacy aliases still referenced by inner pages */
+  --color-ink-foreground: var(--paper);
+  --color-ink-muted: var(--muted-foreground);
+  --color-ink-border: var(--border);
+
+  --shadow-panel: none;
+  --shadow-raise: none;
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0px;
 
-  /* neutral scale */
-  --n-0: oklch(1 0 0);
-  --n-50: oklch(0.978 0.003 84);
-  --n-100: oklch(0.962 0.003 84);
-  --n-200: oklch(0.925 0.003 84);
-  --n-300: oklch(0.868 0.003 84);
-  --n-400: oklch(0.708 0.003 84);
-  --n-500: oklch(0.51 0.003 84);
-  --n-700: oklch(0.31 0.003 84);
-  --n-900: oklch(0.145 0 0);
+  --ink: #060810;
+  --paper: #faf9f5;
+  --cobalt: #0067fd;
+  --fuchsia: #e4005c;
 
-  --background: var(--n-0);
-  --foreground: var(--n-900);
-  --surface: var(--n-50);
-  --surface-2: var(--n-100);
+  --background: var(--ink);
+  --foreground: var(--paper);
+  --surface: #0a0d18;
+  --surface-2: #101422;
 
-  --card: var(--n-0);
-  --card-foreground: var(--n-900);
-  --popover: var(--n-0);
-  --popover-foreground: var(--n-900);
+  --card: #0a0d18;
+  --card-foreground: var(--paper);
+  --popover: #080b14;
+  --popover-foreground: var(--paper);
 
-  --primary: var(--n-900);
-  --primary-foreground: var(--n-0);
-  --secondary: var(--n-100);
-  --secondary-foreground: var(--n-900);
-  --muted: var(--n-100);
-  --muted-foreground: var(--n-500);
-  --accent: var(--n-100);
-  --accent-foreground: var(--n-900);
-  --destructive: oklch(0.55 0.19 27);
-  --destructive-foreground: var(--n-0);
+  --primary: var(--cobalt);
+  --primary-foreground: #ffffff;
+  --secondary: #101422;
+  --secondary-foreground: var(--paper);
+  --muted: #101422;
+  --muted-foreground: color-mix(in srgb, var(--paper) 58%, transparent);
+  --accent: #101422;
+  --accent-foreground: var(--paper);
+  --destructive: var(--fuchsia);
+  --destructive-foreground: #ffffff;
 
-  --border: var(--n-200);
-  --border-strong: var(--n-300);
-  --input: var(--n-300);
-  --ring: var(--n-500);
-
-  /* dark (footer / inverted) surfaces */
-  --ink: oklch(0.11 0 0);
-  --ink-foreground: oklch(0.985 0 0);
-  --ink-muted: oklch(0.72 0 0);
-  --ink-border: oklch(1 0 0 / 12%);
+  --border: color-mix(in srgb, var(--paper) 14%, transparent);
+  --border-strong: color-mix(in srgb, var(--paper) 26%, transparent);
+  --input: color-mix(in srgb, var(--paper) 22%, transparent);
+  --ring: var(--cobalt);
 }
 
-.dark {
-  --background: oklch(0.11 0 0);
-  --foreground: oklch(0.985 0 0);
-  --surface: oklch(0.145 0 0);
-  --surface-2: oklch(0.19 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.11 0 0);
-  --secondary: oklch(0.22 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.22 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.22 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --border-strong: oklch(1 0 0 / 20%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.6 0 0);
+/* Light editorial surface. Rebinds the local token scope so every
+   border/muted utility inside inverts correctly. */
+@utility surface-paper {
+  background-color: var(--paper);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  color: var(--ink);
+  --surface: #f2f0ea;
+  --surface-2: #eae7df;
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --secondary: #eeece5;
+  --secondary-foreground: var(--ink);
+  --muted: #eeece5;
+  --muted-foreground: color-mix(in srgb, var(--ink) 60%, transparent);
+  --accent: #eeece5;
+  --accent-foreground: var(--ink);
+  --border: color-mix(in srgb, var(--ink) 14%, transparent);
+  --border-strong: color-mix(in srgb, var(--ink) 30%, transparent);
+  --input: color-mix(in srgb, var(--ink) 25%, transparent);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+}
+
+@utility surface-ink {
+  background-color: var(--ink);
+  --background: var(--ink);
+  --foreground: var(--paper);
+  color: var(--paper);
+  --border: color-mix(in srgb, var(--paper) 14%, transparent);
+  --border-strong: color-mix(in srgb, var(--paper) 26%, transparent);
+  --muted-foreground: color-mix(in srgb, var(--paper) 58%, transparent);
+  --primary: var(--cobalt);
+  --primary-foreground: #ffffff;
 }
 
 @layer base {
@@ -128,14 +138,13 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    scroll-padding-top: 120px;
+    scroll-padding-top: 96px;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--ink);
+    color: var(--paper);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01" on, "cv01" on;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -144,57 +153,90 @@
   h2,
   h3,
   h4 {
-    letter-spacing: -0.022em;
+    letter-spacing: -0.03em;
     text-wrap: balance;
+    font-weight: 600;
+  }
+
+  ::selection {
+    background: var(--cobalt);
+    color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-foreground);
-    outline-offset: 3px;
+    outline: 2px solid var(--cobalt);
+    outline-offset: 2px;
   }
 }
 
-/* ---- Typography utilities ---- */
+/* ---- Typography ---- */
+
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
 
 @utility kicker {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
 }
 
 @utility display-xl {
-  font-size: clamp(2.5rem, 6.2vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+  font-size: clamp(2.75rem, 7.4vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-weight: 700;
 }
 
 @utility display-lg {
-  font-size: clamp(2.125rem, 4.6vw, 3.5rem);
-  line-height: 1.03;
-  letter-spacing: -0.028em;
-  font-weight: 600;
+  font-size: clamp(2.25rem, 5.2vw, 4.25rem);
+  line-height: 0.94;
+  letter-spacing: -0.038em;
+  font-weight: 700;
 }
 
 @utility display-md {
-  font-size: clamp(1.625rem, 2.8vw, 2.25rem);
-  line-height: 1.1;
-  letter-spacing: -0.024em;
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.032em;
   font-weight: 600;
 }
 
 @utility lede {
-  font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.2vw, 1.1875rem);
+  line-height: 1.62;
   color: var(--color-muted-foreground);
   max-width: 62ch;
 }
 
 @utility rule-t {
   border-top: 1px solid var(--color-border);
+}
+
+/* ---- Structure ---- */
+
+/* Visible 12-column grid overlay, used sparingly. */
+@utility grid-rule {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border) 0 1px,
+    transparent 1px calc(100% / 12)
+  );
+}
+
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-border) 0 1px,
+    transparent 1px 7px
+  );
 }
 
 @utility page-fade {
@@ -204,18 +246,16 @@
 @keyframes page-fade-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 
 @keyframes menu-in {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
   to {
     opacity: 1;
@@ -224,7 +264,22 @@
 }
 
 @utility menu-panel {
-  animation: menu-in 170ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: menu-in 140ms linear both;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility reveal {
+  animation: reveal-up 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
