@@ -29,6 +29,7 @@ import { Route as PlatformIndexRouteImport } from './routes/platform.index'
 import { Route as PlatformAdoptRouteImport } from './routes/platform.adopt'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
 import { Route as PlatformMadamRouteImport } from './routes/platform.madam'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as TrustIndexRouteImport } from './routes/trust.index'
 import { Route as TrustCodeOwnershipRouteImport } from './routes/trust.code-ownership'
@@ -147,6 +148,11 @@ const PlatformMadamRoute = PlatformMadamRouteImport.update({
   path: '/platform/madam',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/solutions/',
   path: '/solutions/',
@@ -253,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
   '/trust/': typeof TrustIndexRoute
   '/zhc/': typeof ZhcIndexRoute
@@ -289,6 +296,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
+  '/resources': typeof ResourcesIndexRoute
   '/solutions': typeof SolutionsIndexRoute
   '/trust': typeof TrustIndexRoute
   '/zhc': typeof ZhcIndexRoute
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
   '/trust/': typeof TrustIndexRoute
   '/zhc/': typeof ZhcIndexRoute
@@ -364,6 +373,7 @@ export interface FileRouteTypes {
     | '/insights/'
     | '/outcomes/'
     | '/platform/'
+    | '/resources/'
     | '/solutions/'
     | '/trust/'
     | '/zhc/'
@@ -400,6 +410,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/outcomes'
     | '/platform'
+    | '/resources'
     | '/solutions'
     | '/trust'
     | '/zhc'
@@ -436,6 +447,7 @@ export interface FileRouteTypes {
     | '/insights/'
     | '/outcomes/'
     | '/platform/'
+    | '/resources/'
     | '/solutions/'
     | '/trust/'
     | '/zhc/'
@@ -473,6 +485,7 @@ export interface RootRouteChildren {
   InsightsIndexRoute: typeof InsightsIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
   ZhcIndexRoute: typeof ZhcIndexRoute
@@ -622,6 +635,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformMadamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/': {
       id: '/solutions/'
       path: '/solutions'
@@ -754,6 +774,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsIndexRoute: InsightsIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
   ZhcIndexRoute: ZhcIndexRoute,
