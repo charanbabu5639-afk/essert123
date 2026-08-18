@@ -37,6 +37,7 @@ import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sov
 import { Route as ZhcIndexRouteImport } from './routes/zhc.index'
 import { Route as ZhcEnterpriseRouteImport } from './routes/zhc.enterprise'
 import { Route as ZhcHowItWorksRouteImport } from './routes/zhc.how-it-works'
+import { Route as ZhcProofRouteImport } from './routes/zhc.proof'
 import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
 import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 
@@ -186,6 +187,11 @@ const ZhcHowItWorksRoute = ZhcHowItWorksRouteImport.update({
   path: '/zhc/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhcProofRoute = ZhcProofRouteImport.update({
+  id: '/zhc/proof',
+  path: '/zhc/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CybergrcApplicationsIndexRoute =
   CybergrcApplicationsIndexRouteImport.update({
     id: '/cybergrc/applications/',
@@ -222,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
   '/zhc/enterprise': typeof ZhcEnterpriseRoute
   '/zhc/how-it-works': typeof ZhcHowItWorksRoute
+  '/zhc/proof': typeof ZhcProofRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
@@ -254,6 +261,7 @@ export interface FileRoutesByTo {
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
   '/zhc/enterprise': typeof ZhcEnterpriseRoute
   '/zhc/how-it-works': typeof ZhcHowItWorksRoute
+  '/zhc/proof': typeof ZhcProofRoute
   '/cybergrc': typeof CybergrcIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
@@ -287,6 +295,7 @@ export interface FileRoutesById {
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
   '/zhc/enterprise': typeof ZhcEnterpriseRoute
   '/zhc/how-it-works': typeof ZhcHowItWorksRoute
+  '/zhc/proof': typeof ZhcProofRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
@@ -321,6 +330,7 @@ export interface FileRouteTypes {
     | '/trust/sovereign-deployment'
     | '/zhc/enterprise'
     | '/zhc/how-it-works'
+    | '/zhc/proof'
     | '/cybergrc/'
     | '/insights/'
     | '/outcomes/'
@@ -353,6 +363,7 @@ export interface FileRouteTypes {
     | '/trust/sovereign-deployment'
     | '/zhc/enterprise'
     | '/zhc/how-it-works'
+    | '/zhc/proof'
     | '/cybergrc'
     | '/insights'
     | '/outcomes'
@@ -385,6 +396,7 @@ export interface FileRouteTypes {
     | '/trust/sovereign-deployment'
     | '/zhc/enterprise'
     | '/zhc/how-it-works'
+    | '/zhc/proof'
     | '/cybergrc/'
     | '/insights/'
     | '/outcomes/'
@@ -418,6 +430,7 @@ export interface RootRouteChildren {
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
   ZhcEnterpriseRoute: typeof ZhcEnterpriseRoute
   ZhcHowItWorksRoute: typeof ZhcHowItWorksRoute
+  ZhcProofRoute: typeof ZhcProofRoute
   CybergrcIndexRoute: typeof CybergrcIndexRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
@@ -626,6 +639,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhcHowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zhc/proof': {
+      id: '/zhc/proof'
+      path: '/zhc/proof'
+      fullPath: '/zhc/proof'
+      preLoaderRoute: typeof ZhcProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cybergrc/applications/': {
       id: '/cybergrc/applications/'
       path: '/cybergrc/applications'
@@ -667,6 +687,7 @@ const rootRouteChildren: RootRouteChildren = {
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
   ZhcEnterpriseRoute: ZhcEnterpriseRoute,
   ZhcHowItWorksRoute: ZhcHowItWorksRoute,
+  ZhcProofRoute: ZhcProofRoute,
   CybergrcIndexRoute: CybergrcIndexRoute,
   InsightsIndexRoute: InsightsIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
