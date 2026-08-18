@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookADemoRouteImport } from './routes/book-a-demo'
 import { Route as CompanyRouteImport } from './routes/company'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExecutiveBriefingRouteImport } from './routes/executive-briefing'
 import { Route as LoginPlaceholderRouteImport } from './routes/login-placeholder'
 import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
@@ -56,6 +57,11 @@ const BookADemoRoute = BookADemoRouteImport.update({
 const CompanyRoute = CompanyRouteImport.update({
   id: '/company',
   path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExecutiveBriefingRoute = ExecutiveBriefingRouteImport.update({
@@ -221,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
   '/what-we-build': typeof WhatWeBuildRoute
@@ -256,6 +263,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
   '/what-we-build': typeof WhatWeBuildRoute
@@ -292,6 +300,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
   '/what-we-build': typeof WhatWeBuildRoute
@@ -329,6 +338,7 @@ export interface FileRouteTypes {
     | '/'
     | '/book-a-demo'
     | '/company'
+    | '/contact'
     | '/executive-briefing'
     | '/login-placeholder'
     | '/what-we-build'
@@ -364,6 +374,7 @@ export interface FileRouteTypes {
     | '/'
     | '/book-a-demo'
     | '/company'
+    | '/contact'
     | '/executive-briefing'
     | '/login-placeholder'
     | '/what-we-build'
@@ -399,6 +410,7 @@ export interface FileRouteTypes {
     | '/'
     | '/book-a-demo'
     | '/company'
+    | '/contact'
     | '/executive-briefing'
     | '/login-placeholder'
     | '/what-we-build'
@@ -435,6 +447,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookADemoRoute: typeof BookADemoRoute
   CompanyRoute: typeof CompanyRoute
+  ContactRoute: typeof ContactRoute
   ExecutiveBriefingRoute: typeof ExecutiveBriefingRoute
   LoginPlaceholderRoute: typeof LoginPlaceholderRoute
   WhatWeBuildRoute: typeof WhatWeBuildRoute
@@ -488,6 +501,13 @@ declare module '@tanstack/react-router' {
       path: '/company'
       fullPath: '/company'
       preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/executive-briefing': {
@@ -707,6 +727,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookADemoRoute: BookADemoRoute,
   CompanyRoute: CompanyRoute,
+  ContactRoute: ContactRoute,
   ExecutiveBriefingRoute: ExecutiveBriefingRoute,
   LoginPlaceholderRoute: LoginPlaceholderRoute,
   WhatWeBuildRoute: WhatWeBuildRoute,
