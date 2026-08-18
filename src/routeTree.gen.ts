@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExecutiveBriefingRouteImport } from './routes/executive-briefing'
 import { Route as LoginPlaceholderRouteImport } from './routes/login-placeholder'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
 import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
 import { Route as CybergrcContactSalesRouteImport } from './routes/cybergrc.contact-sales'
@@ -79,6 +80,11 @@ const LoginPlaceholderRoute = LoginPlaceholderRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
@@ -243,6 +249,7 @@ export interface FileRoutesByFullPath {
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
   '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
@@ -281,6 +288,7 @@ export interface FileRoutesByTo {
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
   '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
@@ -320,6 +328,7 @@ export interface FileRoutesById {
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
   '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
@@ -360,6 +369,7 @@ export interface FileRouteTypes {
     | '/executive-briefing'
     | '/login-placeholder'
     | '/privacy'
+    | '/terms'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
@@ -398,6 +408,7 @@ export interface FileRouteTypes {
     | '/executive-briefing'
     | '/login-placeholder'
     | '/privacy'
+    | '/terms'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
@@ -436,6 +447,7 @@ export interface FileRouteTypes {
     | '/executive-briefing'
     | '/login-placeholder'
     | '/privacy'
+    | '/terms'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
@@ -475,6 +487,7 @@ export interface RootRouteChildren {
   ExecutiveBriefingRoute: typeof ExecutiveBriefingRoute
   LoginPlaceholderRoute: typeof LoginPlaceholderRoute
   PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   WhatWeBuildRoute: typeof WhatWeBuildRoute
   CybergrcContactSalesRoute: typeof CybergrcContactSalesRoute
   CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
@@ -555,6 +568,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/what-we-build': {
@@ -771,6 +791,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExecutiveBriefingRoute: ExecutiveBriefingRoute,
   LoginPlaceholderRoute: LoginPlaceholderRoute,
   PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   WhatWeBuildRoute: WhatWeBuildRoute,
   CybergrcContactSalesRoute: CybergrcContactSalesRoute,
   CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
