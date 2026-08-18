@@ -35,6 +35,7 @@ import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.se
 import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
 import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
 import { Route as ZhcIndexRouteImport } from './routes/zhc.index'
+import { Route as ZhcHowItWorksRouteImport } from './routes/zhc.how-it-works'
 import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
 import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 
@@ -174,6 +175,11 @@ const ZhcIndexRoute = ZhcIndexRouteImport.update({
   path: '/zhc/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhcHowItWorksRoute = ZhcHowItWorksRouteImport.update({
+  id: '/zhc/how-it-works',
+  path: '/zhc/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CybergrcApplicationsIndexRoute =
   CybergrcApplicationsIndexRouteImport.update({
     id: '/cybergrc/applications/',
@@ -208,6 +214,7 @@ export interface FileRoutesByFullPath {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/zhc/how-it-works': typeof ZhcHowItWorksRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
@@ -238,6 +245,7 @@ export interface FileRoutesByTo {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/zhc/how-it-works': typeof ZhcHowItWorksRoute
   '/cybergrc': typeof CybergrcIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
@@ -269,6 +277,7 @@ export interface FileRoutesById {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
+  '/zhc/how-it-works': typeof ZhcHowItWorksRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
@@ -301,6 +310,7 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/zhc/how-it-works'
     | '/cybergrc/'
     | '/insights/'
     | '/outcomes/'
@@ -331,6 +341,7 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/zhc/how-it-works'
     | '/cybergrc'
     | '/insights'
     | '/outcomes'
@@ -361,6 +372,7 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
+    | '/zhc/how-it-works'
     | '/cybergrc/'
     | '/insights/'
     | '/outcomes/'
@@ -392,6 +404,7 @@ export interface RootRouteChildren {
   TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
   TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
+  ZhcHowItWorksRoute: typeof ZhcHowItWorksRoute
   CybergrcIndexRoute: typeof CybergrcIndexRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
@@ -586,6 +599,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhcIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zhc/how-it-works': {
+      id: '/zhc/how-it-works'
+      path: '/zhc/how-it-works'
+      fullPath: '/zhc/how-it-works'
+      preLoaderRoute: typeof ZhcHowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cybergrc/applications/': {
       id: '/cybergrc/applications/'
       path: '/cybergrc/applications'
@@ -625,6 +645,7 @@ const rootRouteChildren: RootRouteChildren = {
   TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
   TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
+  ZhcHowItWorksRoute: ZhcHowItWorksRoute,
   CybergrcIndexRoute: CybergrcIndexRoute,
   InsightsIndexRoute: InsightsIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
