@@ -6,27 +6,25 @@ import { Logo } from "./Logo";
 import { PRIMARY_NAV, LOGIN_URL, primaryCta, type NavColumn } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
-function MenuColumns({ columns, onNavigate }: { columns: NavColumn[]; onNavigate: () => void }) {
+function MegaMenuColumns({ columns, onNavigate }: { columns: NavColumn[]; onNavigate: () => void }) {
   return (
-    <div className="grid gap-px bg-border sm:grid-cols-2">
+    <div
+      className="grid gap-8"
+      style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0,1fr))` }}
+    >
       {columns.map((col, i) => (
-        <div key={col.head || `col-${i}`} className="bg-popover p-6">
-          <p className="mono-label mb-5 text-cobalt">{col.head}</p>
-          <ul className="divide-y divide-border">
+        <div key={col.head || `col-${i}`}>
+          {col.head ? <p className="kicker mb-4">{col.head}</p> : <span className="mb-4 block h-4" />}
+          <ul className="space-y-1">
             {col.items.map((item) => (
               <li key={item.label}>
                 <Link
                   to={item.to}
                   {...(item.hash ? { hash: item.hash } : {})}
                   onClick={onNavigate}
-                  className="group flex items-baseline justify-between gap-6 py-3 transition-colors hover:text-cobalt"
+                  className="block rounded-md px-3 py-2 -mx-3 text-sm transition-colors hover:bg-secondary"
                 >
-                  <span className="text-sm font-medium">{item.label}</span>
-                  {item.note ? (
-                    <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground">
-                      {item.note}
-                    </span>
-                  ) : null}
+                  {item.label}
                 </Link>
               </li>
             ))}
@@ -67,118 +65,117 @@ export function Header() {
   };
 
   const activeColumns = PRIMARY_NAV.find((n) => n.label === openMenu)?.columns;
+
   const isActive = (prefix: string) => pathname === prefix || pathname.startsWith(prefix + "/");
 
   return (
     <>
-      <header
-        className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur"
-        onKeyDown={(e) => {
-          if (e.key === "Escape") setOpenMenu(null);
-        }}
-      >
-        <Container>
-          <div className="flex h-[72px] items-center justify-between gap-6">
+    <header
+      className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur"
+      onKeyDown={(e) => {
+        if (e.key === "Escape") setOpenMenu(null);
+      }}
+    >
+      <Container>
+        <div className="flex h-[76px] items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
             <Link to="/" aria-label="Essert home" className="shrink-0">
               <Logo />
             </Link>
+            <span className="hidden border-l border-border pl-4 text-xs leading-tight text-muted-foreground 2xl:block">
+              ZHC — Zero Human Coding™
+              <br />
+              Autonomous software production
+            </span>
+          </div>
 
-            <nav aria-label="Primary" className="hidden lg:block">
-              <ul className="flex items-center">
-                {PRIMARY_NAV.map((item) => (
-                  <li
-                    key={item.label}
-                    className="relative"
-                    onMouseEnter={() => {
-                      cancelClose();
-                      setOpenMenu(item.columns ? item.label : null);
-                    }}
-                    onMouseLeave={scheduleClose}
-                  >
-                    <span className="flex items-center">
-                      <Link
-                        to={item.to}
-                        onFocus={() => setOpenMenu(item.columns ? item.label : null)}
-                        className={cn(
-                          "flex items-center gap-2 whitespace-nowrap border-b-2 px-4 py-[25px] font-mono text-[0.6875rem] uppercase tracking-[0.16em] transition-colors",
-                          isActive(item.matchPrefix)
-                            ? "border-cobalt text-foreground"
-                            : "border-transparent text-foreground/70 hover:text-foreground",
-                        )}
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center">
+              {PRIMARY_NAV.map((item) => (
+                <li
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => {
+                    cancelClose();
+                    setOpenMenu(item.columns ? item.label : null);
+                  }}
+                  onMouseLeave={scheduleClose}
+                >
+                  <span className="flex items-center">
+                    <Link
+                      to={item.to}
+                      onFocus={() => setOpenMenu(item.columns ? item.label : null)}
+                      className={cn(
+                        "whitespace-nowrap border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
+                        isActive(item.matchPrefix)
+                          ? "border-foreground text-foreground"
+                          : "border-transparent text-foreground/75 hover:text-foreground",
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.columns ? (
+                      <button
+                        type="button"
+                        aria-label={`${item.label} menu`}
+                        aria-expanded={openMenu === item.label}
+                        onClick={() =>
+                          setOpenMenu(openMenu === item.label ? null : item.label)
+                        }
+                        className="-ml-1 py-[26px] pr-1 text-muted-foreground transition-colors hover:text-foreground"
                       >
-                        {item.emphasis ? (
-                          <span
-                            aria-hidden
-                            className={cn(
-                              "h-1.5 w-1.5",
-                              isActive(item.matchPrefix) ? "bg-cobalt" : "bg-cobalt/70",
-                            )}
-                          />
-                        ) : null}
-                        {item.label}
-                      </Link>
-                      {item.columns ? (
-                        <button
-                          type="button"
-                          aria-label={`${item.label} menu`}
-                          aria-expanded={openMenu === item.label}
-                          onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
-                          className="-ml-2 py-[25px] pr-1 text-muted-foreground transition-colors hover:text-foreground"
-                        >
-                          <ChevronDown
-                            className={cn(
-                              "h-3 w-3 transition-transform duration-150",
-                              openMenu === item.label && "rotate-180",
-                            )}
-                          />
-                        </button>
-                      ) : null}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                        <ChevronDown
+                          className={cn(
+                            "h-3.5 w-3.5 transition-transform duration-200",
+                            openMenu === item.label && "rotate-180",
+                          )}
+                        />
+                      </button>
+                    ) : null}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <div className="flex items-center gap-4">
-              <a
-                href={LOGIN_URL}
-                className="hidden font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-foreground/60 transition-colors hover:text-foreground lg:block"
-              >
-                Login
-              </a>
-              <CtaLink to={cta.to} className="hidden whitespace-nowrap px-5 py-3 lg:inline-flex">
-                {cta.label}
-              </CtaLink>
-              <button
-                type="button"
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                aria-expanded={mobileOpen}
-                onClick={() => setMobileOpen((v) => !v)}
-                className="grid h-10 w-10 place-items-center border border-border lg:hidden"
-              >
-                {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-              </button>
-            </div>
+          <div className="flex items-center gap-3">
+            <a
+              href={LOGIN_URL}
+              className="hidden text-sm font-medium text-foreground/70 transition-colors hover:text-foreground lg:block"
+            >
+              Login
+            </a>
+            <CtaLink to={cta.to} className="hidden whitespace-nowrap px-4 py-2.5 lg:inline-flex">
+              {cta.label}
+            </CtaLink>
+            <button
+              type="button"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-md border border-border lg:hidden"
+            >
+              {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
-        </Container>
+        </div>
+      </Container>
 
-        {activeColumns ? (
-          <div
-            className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover lg:block"
-            onMouseEnter={cancelClose}
-            onMouseLeave={scheduleClose}
-          >
-            <Container>
-              <div className="py-px">
-                <MenuColumns columns={activeColumns} onNavigate={() => setOpenMenu(null)} />
-              </div>
-            </Container>
+      {activeColumns ? (
+        <div
+          className="menu-panel absolute inset-x-0 top-full hidden border-b border-border bg-popover shadow-panel lg:block"
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
+        >
+          <div className="mx-auto w-full max-w-[1280px] px-8 py-8 xl:px-12">
+            <MegaMenuColumns columns={activeColumns} onNavigate={() => setOpenMenu(null)} />
           </div>
-        ) : null}
-      </header>
+        </div>
+      ) : null}
+    </header>
 
       {mobileOpen ? (
-        <div className="fixed inset-x-0 bottom-0 top-[72px] z-50 flex flex-col bg-background lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-[76px] z-50 flex flex-col bg-background lg:hidden">
           <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-5 pb-6">
             <ul className="divide-y divide-border">
               {PRIMARY_NAV.map((item) => (
@@ -187,11 +184,8 @@ export function Header() {
                     <Link
                       to={item.to}
                       onClick={() => setMobileOpen(false)}
-                      className="flex flex-1 items-center gap-3 py-4 text-lg font-semibold tracking-[-0.02em]"
+                      className="flex-1 py-4 text-base font-medium"
                     >
-                      {item.emphasis ? (
-                        <span aria-hidden className="h-1.5 w-1.5 bg-cobalt" />
-                      ) : null}
                       {item.label}
                     </Link>
                     {item.columns ? (
@@ -206,7 +200,7 @@ export function Header() {
                       >
                         <ChevronDown
                           className={cn(
-                            "h-4 w-4 transition-transform duration-150",
+                            "h-4 w-4 transition-transform duration-200",
                             mobileGroup === item.label && "rotate-180",
                           )}
                         />
@@ -214,25 +208,20 @@ export function Header() {
                     ) : null}
                   </div>
                   {item.columns && mobileGroup === item.label ? (
-                    <div className="space-y-6 pb-6">
+                    <div className="space-y-5 pb-5 pl-1">
                       {item.columns.map((col, i) => (
                         <div key={col.head || `m-col-${i}`}>
-                          <p className="mono-label mb-2 text-cobalt">{col.head}</p>
-                          <ul className="divide-y divide-border border-t border-border">
+                          {col.head ? <p className="kicker mb-2">{col.head}</p> : null}
+                          <ul className="space-y-1">
                             {col.items.map((sub) => (
                               <li key={sub.label}>
                                 <Link
                                   to={sub.to}
                                   {...(sub.hash ? { hash: sub.hash } : {})}
                                   onClick={() => setMobileOpen(false)}
-                                  className="flex items-baseline justify-between gap-4 py-3"
+                                  className="block py-1.5 text-sm text-muted-foreground"
                                 >
-                                  <span className="text-sm">{sub.label}</span>
-                                  {sub.note ? (
-                                    <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground">
-                                      {sub.note}
-                                    </span>
-                                  ) : null}
+                                  {sub.label}
                                 </Link>
                               </li>
                             ))}
@@ -244,10 +233,7 @@ export function Header() {
                 </li>
               ))}
               <li>
-                <a
-                  href={LOGIN_URL}
-                  className="block py-4 font-mono text-[0.6875rem] uppercase tracking-[0.16em]"
-                >
+                <a href={LOGIN_URL} className="block py-4 text-base font-medium">
                   Login
                 </a>
               </li>

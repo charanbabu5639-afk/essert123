@@ -10,7 +10,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-10 xl:px-14", className)}>
+    <div className={cn("mx-auto w-full max-w-[1280px] px-5 md:px-7 lg:px-8 xl:px-12", className)}>
       {children}
     </div>
   );
@@ -21,42 +21,26 @@ export function Section({
   id,
   tone = "default",
   bordered = true,
-  index,
-  label,
   className,
 }: {
   children: ReactNode;
   id?: string;
-  tone?: "default" | "surface" | "ink" | "paper";
+  tone?: "default" | "surface" | "ink";
   bordered?: boolean;
-  /** Section number, e.g. "03" */
-  index?: string;
-  /** Mono section label rendered beside the number. */
-  label?: string;
   className?: string;
 }) {
   return (
     <section
       id={id}
       className={cn(
-        "scroll-mt-28 py-16 sm:py-20 lg:py-28",
+        "scroll-mt-32 py-14 sm:py-16 lg:py-24",
         bordered && "rule-t",
         tone === "surface" && "bg-surface",
-        tone === "ink" && "surface-ink",
-        tone === "paper" && "surface-paper",
+        tone === "ink" && "bg-ink text-ink-foreground",
         className,
       )}
     >
-      <Container>
-        {index || label ? (
-          <div className="mb-10 flex items-center gap-4 border-b border-border pb-3">
-            <span className="mono-label text-cobalt">{index}</span>
-            <span className="mono-label text-muted-foreground">{label}</span>
-            <span className="hatch h-3 flex-1 opacity-70" aria-hidden />
-          </div>
-        ) : null}
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </section>
   );
 }
@@ -79,10 +63,10 @@ export function SectionHead({
   as?: "h1" | "h2" | "h3";
 }) {
   return (
-    <div className={cn("max-w-4xl", className)}>
+    <div className={cn("max-w-3xl", className)}>
       {kicker ? <Kicker className="mb-4">{kicker}</Kicker> : null}
       <As className={As === "h1" ? "display-lg" : "display-md"}>{title}</As>
-      {lede ? <p className="lede mt-6">{lede}</p> : null}
+      {lede ? <p className="lede mt-5">{lede}</p> : null}
     </div>
   );
 }
@@ -106,11 +90,8 @@ export function PageHero({
       <Container>
         <div className="grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-8">
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-2 w-2 bg-cobalt" aria-hidden />
-              <Kicker className="!text-foreground/70">{kicker}</Kicker>
-            </div>
-            <h1 className="display-lg">{title}</h1>
+            <Kicker>{kicker}</Kicker>
+            <h1 className="display-lg mt-5">{title}</h1>
             {lede ? <p className="lede mt-6">{lede}</p> : null}
             {actions ? <div className="mt-9 flex flex-wrap gap-3">{actions}</div> : null}
           </div>
@@ -122,7 +103,7 @@ export function PageHero({
 }
 
 const btnBase =
-  "inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] transition-colors duration-150";
+  "inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition-all duration-200";
 
 export function CtaLink({
   to,
@@ -143,10 +124,11 @@ export function CtaLink({
       {...(hash ? { hash } : {})}
       className={cn(
         btnBase,
-        variant === "primary" && "bg-cobalt text-white hover:bg-cobalt/85",
+        variant === "primary" &&
+          "bg-primary text-primary-foreground hover:-translate-y-px hover:bg-foreground/90",
         variant === "outline" &&
-          "border border-border-strong text-foreground hover:border-cobalt hover:text-cobalt",
-        variant === "ink" && "bg-paper text-ink hover:bg-paper/85",
+          "border border-border-strong bg-background text-foreground hover:bg-secondary",
+        variant === "ink" && "bg-ink-foreground text-ink hover:opacity-90",
         className,
       )}
     >
@@ -171,7 +153,7 @@ export function ArrowLink({
       to={to}
       {...(hash ? { hash } : {})}
       className={cn(
-        "group inline-flex items-center gap-2 border-b border-border-strong pb-1 font-mono text-[0.6875rem] uppercase tracking-[0.16em] transition-colors hover:border-cobalt hover:text-cobalt",
+        "group inline-flex items-center gap-2 border-b border-foreground/25 pb-1 text-sm font-medium transition-colors hover:border-foreground",
         className,
       )}
     >
@@ -194,11 +176,9 @@ export function DefList({
   return (
     <dl className={cn("divide-y divide-border border-t border-border", className)}>
       {items.map((i) => (
-        <div key={i.term} className="grid gap-2 py-6 md:grid-cols-12 md:gap-8">
-          <dt className="mono-label md:col-span-4 md:pt-1">{i.term}</dt>
-          <dd className="text-[0.9375rem] leading-relaxed text-muted-foreground md:col-span-8">
-            {i.detail}
-          </dd>
+        <div key={i.term} className="grid gap-2 py-5 md:grid-cols-12 md:gap-8">
+          <dt className="kicker md:col-span-4 md:pt-1">{i.term}</dt>
+          <dd className="text-[0.9375rem] leading-relaxed md:col-span-8">{i.detail}</dd>
         </div>
       ))}
     </dl>
@@ -217,7 +197,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        "border border-border p-6 transition-colors duration-150 sm:p-8",
+        "rounded-xl border border-border p-6 transition-colors duration-200 sm:p-8",
         tone === "surface" ? "bg-surface" : "bg-card",
         className,
       )}
@@ -230,8 +210,8 @@ export function Panel({
 /** Explicit placeholder for content awaiting approval. Never invent data. */
 export function PendingNote({ children }: { children: ReactNode }) {
   return (
-    <div className="border-l-2 border-fuchsia bg-surface px-5 py-4">
-      <p className="mono-label mb-2 text-fuchsia">Placeholder / awaiting verified record</p>
+    <div className="rounded-lg border border-dashed border-border-strong bg-surface px-5 py-4">
+      <p className="kicker mb-2">Pending approved content</p>
       <p className="text-sm leading-relaxed text-muted-foreground">{children}</p>
     </div>
   );
@@ -260,8 +240,8 @@ export function Faqs({ items }: { items: { q: string; a: ReactNode }[] }) {
 export function ClosingCta({
   title,
   body,
-  to = "/book-a-demo",
-  label = "Book a Demo",
+  to = "/executive-briefing",
+  label = "Book an Executive Briefing",
   secondary,
 }: {
   title: string;
@@ -271,18 +251,18 @@ export function ClosingCta({
   secondary?: ReactNode;
 }) {
   return (
-    <Section tone="ink" bordered index="—" label="Next">
+    <Section tone="ink" bordered={false}>
       <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <h2 className="display-md">{title}</h2>
           {body ? (
-            <p className="mt-5 max-w-xl text-[1.0625rem] leading-relaxed text-muted-foreground">
-              {body}
-            </p>
+            <p className="mt-5 max-w-xl text-[1.0625rem] leading-relaxed text-ink-muted">{body}</p>
           ) : null}
         </div>
         <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-          <CtaLink to={to}>{label}</CtaLink>
+          <CtaLink to={to} variant="ink">
+            {label}
+          </CtaLink>
           {secondary}
         </div>
       </div>

@@ -10,13 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BookADemoRouteImport } from './routes/book-a-demo'
 import { Route as CompanyRouteImport } from './routes/company'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExecutiveBriefingRouteImport } from './routes/executive-briefing'
 import { Route as LoginPlaceholderRouteImport } from './routes/login-placeholder'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WhatWeBuildRouteImport } from './routes/what-we-build'
 import { Route as CybergrcIndexRouteImport } from './routes/cybergrc.index'
 import { Route as CybergrcContactSalesRouteImport } from './routes/cybergrc.contact-sales'
@@ -31,8 +27,6 @@ import { Route as PlatformIndexRouteImport } from './routes/platform.index'
 import { Route as PlatformAdoptRouteImport } from './routes/platform.adopt'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
 import { Route as PlatformMadamRouteImport } from './routes/platform.madam'
-import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
-import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as TrustIndexRouteImport } from './routes/trust.index'
 import { Route as TrustCodeOwnershipRouteImport } from './routes/trust.code-ownership'
 import { Route as TrustDataResidencyRouteImport } from './routes/trust.data-residency'
@@ -40,10 +34,6 @@ import { Route as TrustDeploymentArchitectureRouteImport } from './routes/trust.
 import { Route as TrustSecurityArchitectureRouteImport } from './routes/trust.security-architecture'
 import { Route as TrustSecurityOverviewRouteImport } from './routes/trust.security-overview'
 import { Route as TrustSovereignDeploymentRouteImport } from './routes/trust.sovereign-deployment'
-import { Route as ZhcIndexRouteImport } from './routes/zhc.index'
-import { Route as ZhcEnterpriseRouteImport } from './routes/zhc.enterprise'
-import { Route as ZhcHowItWorksRouteImport } from './routes/zhc.how-it-works'
-import { Route as ZhcProofRouteImport } from './routes/zhc.proof'
 import { Route as CybergrcApplicationsIndexRouteImport } from './routes/cybergrc.applications.index'
 import { Route as CybergrcApplicationsApplicationSlugRouteImport } from './routes/cybergrc.applications.$applicationSlug'
 
@@ -52,19 +42,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BookADemoRoute = BookADemoRouteImport.update({
-  id: '/book-a-demo',
-  path: '/book-a-demo',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CompanyRoute = CompanyRouteImport.update({
   id: '/company',
   path: '/company',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExecutiveBriefingRoute = ExecutiveBriefingRouteImport.update({
@@ -75,16 +55,6 @@ const ExecutiveBriefingRoute = ExecutiveBriefingRouteImport.update({
 const LoginPlaceholderRoute = LoginPlaceholderRouteImport.update({
   id: '/login-placeholder',
   path: '/login-placeholder',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhatWeBuildRoute = WhatWeBuildRouteImport.update({
@@ -160,16 +130,6 @@ const PlatformMadamRoute = PlatformMadamRouteImport.update({
   path: '/platform/madam',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
-  id: '/resources/',
-  path: '/resources/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
-  id: '/solutions/',
-  path: '/solutions/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TrustIndexRoute = TrustIndexRouteImport.update({
   id: '/trust/',
   path: '/trust/',
@@ -208,26 +168,6 @@ const TrustSovereignDeploymentRoute =
     path: '/trust/sovereign-deployment',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ZhcIndexRoute = ZhcIndexRouteImport.update({
-  id: '/zhc/',
-  path: '/zhc/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ZhcEnterpriseRoute = ZhcEnterpriseRouteImport.update({
-  id: '/zhc/enterprise',
-  path: '/zhc/enterprise',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ZhcHowItWorksRoute = ZhcHowItWorksRouteImport.update({
-  id: '/zhc/how-it-works',
-  path: '/zhc/how-it-works',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ZhcProofRoute = ZhcProofRouteImport.update({
-  id: '/zhc/proof',
-  path: '/zhc/proof',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CybergrcApplicationsIndexRoute =
   CybergrcApplicationsIndexRouteImport.update({
     id: '/cybergrc/applications/',
@@ -243,13 +183,9 @@ const CybergrcApplicationsApplicationSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
-  '/contact': typeof ContactRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
-  '/privacy': typeof PrivacyRoute
-  '/terms': typeof TermsRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
@@ -266,29 +202,19 @@ export interface FileRoutesByFullPath {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
-  '/zhc/enterprise': typeof ZhcEnterpriseRoute
-  '/zhc/how-it-works': typeof ZhcHowItWorksRoute
-  '/zhc/proof': typeof ZhcProofRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
-  '/resources/': typeof ResourcesIndexRoute
-  '/solutions/': typeof SolutionsIndexRoute
   '/trust/': typeof TrustIndexRoute
-  '/zhc/': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
   '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
-  '/contact': typeof ContactRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
-  '/privacy': typeof PrivacyRoute
-  '/terms': typeof TermsRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
@@ -305,30 +231,20 @@ export interface FileRoutesByTo {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
-  '/zhc/enterprise': typeof ZhcEnterpriseRoute
-  '/zhc/how-it-works': typeof ZhcHowItWorksRoute
-  '/zhc/proof': typeof ZhcProofRoute
   '/cybergrc': typeof CybergrcIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/outcomes': typeof OutcomesIndexRoute
   '/platform': typeof PlatformIndexRoute
-  '/resources': typeof ResourcesIndexRoute
-  '/solutions': typeof SolutionsIndexRoute
   '/trust': typeof TrustIndexRoute
-  '/zhc': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
   '/cybergrc/applications': typeof CybergrcApplicationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/book-a-demo': typeof BookADemoRoute
   '/company': typeof CompanyRoute
-  '/contact': typeof ContactRoute
   '/executive-briefing': typeof ExecutiveBriefingRoute
   '/login-placeholder': typeof LoginPlaceholderRoute
-  '/privacy': typeof PrivacyRoute
-  '/terms': typeof TermsRoute
   '/what-we-build': typeof WhatWeBuildRoute
   '/cybergrc/contact-sales': typeof CybergrcContactSalesRoute
   '/cybergrc/how-it-works': typeof CybergrcHowItWorksRoute
@@ -345,17 +261,11 @@ export interface FileRoutesById {
   '/trust/security-architecture': typeof TrustSecurityArchitectureRoute
   '/trust/security-overview': typeof TrustSecurityOverviewRoute
   '/trust/sovereign-deployment': typeof TrustSovereignDeploymentRoute
-  '/zhc/enterprise': typeof ZhcEnterpriseRoute
-  '/zhc/how-it-works': typeof ZhcHowItWorksRoute
-  '/zhc/proof': typeof ZhcProofRoute
   '/cybergrc/': typeof CybergrcIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/outcomes/': typeof OutcomesIndexRoute
   '/platform/': typeof PlatformIndexRoute
-  '/resources/': typeof ResourcesIndexRoute
-  '/solutions/': typeof SolutionsIndexRoute
   '/trust/': typeof TrustIndexRoute
-  '/zhc/': typeof ZhcIndexRoute
   '/cybergrc/applications/$applicationSlug': typeof CybergrcApplicationsApplicationSlugRoute
   '/cybergrc/applications/': typeof CybergrcApplicationsIndexRoute
 }
@@ -363,13 +273,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/book-a-demo'
     | '/company'
-    | '/contact'
     | '/executive-briefing'
     | '/login-placeholder'
-    | '/privacy'
-    | '/terms'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
@@ -386,29 +292,19 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
-    | '/zhc/enterprise'
-    | '/zhc/how-it-works'
-    | '/zhc/proof'
     | '/cybergrc/'
     | '/insights/'
     | '/outcomes/'
     | '/platform/'
-    | '/resources/'
-    | '/solutions/'
     | '/trust/'
-    | '/zhc/'
     | '/cybergrc/applications/$applicationSlug'
     | '/cybergrc/applications/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/book-a-demo'
     | '/company'
-    | '/contact'
     | '/executive-briefing'
     | '/login-placeholder'
-    | '/privacy'
-    | '/terms'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
@@ -425,29 +321,19 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
-    | '/zhc/enterprise'
-    | '/zhc/how-it-works'
-    | '/zhc/proof'
     | '/cybergrc'
     | '/insights'
     | '/outcomes'
     | '/platform'
-    | '/resources'
-    | '/solutions'
     | '/trust'
-    | '/zhc'
     | '/cybergrc/applications/$applicationSlug'
     | '/cybergrc/applications'
   id:
     | '__root__'
     | '/'
-    | '/book-a-demo'
     | '/company'
-    | '/contact'
     | '/executive-briefing'
     | '/login-placeholder'
-    | '/privacy'
-    | '/terms'
     | '/what-we-build'
     | '/cybergrc/contact-sales'
     | '/cybergrc/how-it-works'
@@ -464,30 +350,20 @@ export interface FileRouteTypes {
     | '/trust/security-architecture'
     | '/trust/security-overview'
     | '/trust/sovereign-deployment'
-    | '/zhc/enterprise'
-    | '/zhc/how-it-works'
-    | '/zhc/proof'
     | '/cybergrc/'
     | '/insights/'
     | '/outcomes/'
     | '/platform/'
-    | '/resources/'
-    | '/solutions/'
     | '/trust/'
-    | '/zhc/'
     | '/cybergrc/applications/$applicationSlug'
     | '/cybergrc/applications/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BookADemoRoute: typeof BookADemoRoute
   CompanyRoute: typeof CompanyRoute
-  ContactRoute: typeof ContactRoute
   ExecutiveBriefingRoute: typeof ExecutiveBriefingRoute
   LoginPlaceholderRoute: typeof LoginPlaceholderRoute
-  PrivacyRoute: typeof PrivacyRoute
-  TermsRoute: typeof TermsRoute
   WhatWeBuildRoute: typeof WhatWeBuildRoute
   CybergrcContactSalesRoute: typeof CybergrcContactSalesRoute
   CybergrcHowItWorksRoute: typeof CybergrcHowItWorksRoute
@@ -504,17 +380,11 @@ export interface RootRouteChildren {
   TrustSecurityArchitectureRoute: typeof TrustSecurityArchitectureRoute
   TrustSecurityOverviewRoute: typeof TrustSecurityOverviewRoute
   TrustSovereignDeploymentRoute: typeof TrustSovereignDeploymentRoute
-  ZhcEnterpriseRoute: typeof ZhcEnterpriseRoute
-  ZhcHowItWorksRoute: typeof ZhcHowItWorksRoute
-  ZhcProofRoute: typeof ZhcProofRoute
   CybergrcIndexRoute: typeof CybergrcIndexRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
   OutcomesIndexRoute: typeof OutcomesIndexRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
-  ResourcesIndexRoute: typeof ResourcesIndexRoute
-  SolutionsIndexRoute: typeof SolutionsIndexRoute
   TrustIndexRoute: typeof TrustIndexRoute
-  ZhcIndexRoute: typeof ZhcIndexRoute
   CybergrcApplicationsApplicationSlugRoute: typeof CybergrcApplicationsApplicationSlugRoute
   CybergrcApplicationsIndexRoute: typeof CybergrcApplicationsIndexRoute
 }
@@ -528,25 +398,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/book-a-demo': {
-      id: '/book-a-demo'
-      path: '/book-a-demo'
-      fullPath: '/book-a-demo'
-      preLoaderRoute: typeof BookADemoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/company': {
       id: '/company'
       path: '/company'
       fullPath: '/company'
       preLoaderRoute: typeof CompanyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/executive-briefing': {
@@ -561,20 +417,6 @@ declare module '@tanstack/react-router' {
       path: '/login-placeholder'
       fullPath: '/login-placeholder'
       preLoaderRoute: typeof LoginPlaceholderRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/what-we-build': {
@@ -675,20 +517,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformMadamRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resources/': {
-      id: '/resources/'
-      path: '/resources'
-      fullPath: '/resources/'
-      preLoaderRoute: typeof ResourcesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/solutions/': {
-      id: '/solutions/'
-      path: '/solutions'
-      fullPath: '/solutions/'
-      preLoaderRoute: typeof SolutionsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/trust/': {
       id: '/trust/'
       path: '/trust'
@@ -738,34 +566,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrustSovereignDeploymentRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/zhc/': {
-      id: '/zhc/'
-      path: '/zhc'
-      fullPath: '/zhc/'
-      preLoaderRoute: typeof ZhcIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/zhc/enterprise': {
-      id: '/zhc/enterprise'
-      path: '/zhc/enterprise'
-      fullPath: '/zhc/enterprise'
-      preLoaderRoute: typeof ZhcEnterpriseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/zhc/how-it-works': {
-      id: '/zhc/how-it-works'
-      path: '/zhc/how-it-works'
-      fullPath: '/zhc/how-it-works'
-      preLoaderRoute: typeof ZhcHowItWorksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/zhc/proof': {
-      id: '/zhc/proof'
-      path: '/zhc/proof'
-      fullPath: '/zhc/proof'
-      preLoaderRoute: typeof ZhcProofRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/cybergrc/applications/': {
       id: '/cybergrc/applications/'
       path: '/cybergrc/applications'
@@ -785,13 +585,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BookADemoRoute: BookADemoRoute,
   CompanyRoute: CompanyRoute,
-  ContactRoute: ContactRoute,
   ExecutiveBriefingRoute: ExecutiveBriefingRoute,
   LoginPlaceholderRoute: LoginPlaceholderRoute,
-  PrivacyRoute: PrivacyRoute,
-  TermsRoute: TermsRoute,
   WhatWeBuildRoute: WhatWeBuildRoute,
   CybergrcContactSalesRoute: CybergrcContactSalesRoute,
   CybergrcHowItWorksRoute: CybergrcHowItWorksRoute,
@@ -809,17 +605,11 @@ const rootRouteChildren: RootRouteChildren = {
   TrustSecurityArchitectureRoute: TrustSecurityArchitectureRoute,
   TrustSecurityOverviewRoute: TrustSecurityOverviewRoute,
   TrustSovereignDeploymentRoute: TrustSovereignDeploymentRoute,
-  ZhcEnterpriseRoute: ZhcEnterpriseRoute,
-  ZhcHowItWorksRoute: ZhcHowItWorksRoute,
-  ZhcProofRoute: ZhcProofRoute,
   CybergrcIndexRoute: CybergrcIndexRoute,
   InsightsIndexRoute: InsightsIndexRoute,
   OutcomesIndexRoute: OutcomesIndexRoute,
   PlatformIndexRoute: PlatformIndexRoute,
-  ResourcesIndexRoute: ResourcesIndexRoute,
-  SolutionsIndexRoute: SolutionsIndexRoute,
   TrustIndexRoute: TrustIndexRoute,
-  ZhcIndexRoute: ZhcIndexRoute,
   CybergrcApplicationsApplicationSlugRoute:
     CybergrcApplicationsApplicationSlugRoute,
   CybergrcApplicationsIndexRoute: CybergrcApplicationsIndexRoute,
