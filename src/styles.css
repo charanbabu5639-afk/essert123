@@ -46,12 +46,22 @@
   --color-ink-muted: var(--ink-muted);
   --color-ink-border: var(--ink-border);
 
+  --color-signal: var(--signal);
+  --color-production: var(--production);
+  --color-lavender: var(--lavender);
+
   --shadow-panel: 0 1px 0 0 oklch(0 0 0 / 6%), 0 24px 48px -24px oklch(0 0 0 / 18%);
   --shadow-raise: 0 1px 2px 0 oklch(0 0 0 / 6%);
 }
 
 :root {
   --radius: 0.5rem;
+  --block-radius: 2px;
+
+  /* system accents — used sparingly, never as gradients */
+  --signal: oklch(0.48 0.26 268);
+  --production: oklch(0.57 0.24 5);
+  --lavender: oklch(0.86 0.055 285);
 
   /* neutral scale */
   --n-0: oklch(1 0 0);
@@ -98,6 +108,9 @@
 }
 
 .dark {
+  --signal: oklch(0.68 0.19 268);
+  --production: oklch(0.7 0.19 5);
+  --lavender: oklch(0.35 0.05 285);
   --background: oklch(0.11 0 0);
   --foreground: oklch(0.985 0 0);
   --surface: oklch(0.145 0 0);
@@ -236,4 +249,49 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---- Essert block / system visual language ---- */
+
+@utility micro-grid {
+  background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+@utility micro-grid-ink {
+  background-image: radial-gradient(oklch(1 0 0 / 22%) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+@utility block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--block-radius);
+  background-color: var(--color-background);
+}
+
+@utility block-hover {
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    background-color 200ms ease;
+  &:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+  }
+}
+
+@utility num-xl {
+  font-family: var(--font-mono);
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+
+@utility tech-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
