@@ -106,10 +106,10 @@ export function Header() {
                       to={item.to}
                       onFocus={() => setOpenMenu(item.columns ? item.label : null)}
                       className={cn(
-                        "whitespace-nowrap border-b-2 px-3 py-[26px] text-sm font-medium transition-colors",
+                        "whitespace-nowrap border-b-2 px-3 py-[26px] font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.08em] transition-colors",
                         isActive(item.matchPrefix)
-                          ? "border-foreground text-foreground"
-                          : "border-transparent text-foreground/75 hover:text-foreground",
+                          ? "border-fuchsia-brand text-foreground"
+                          : "border-transparent text-foreground/70 hover:text-foreground",
                       )}
                     >
                       {item.label}

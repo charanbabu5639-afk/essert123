@@ -71,7 +71,7 @@ export function SectionHead({
   );
 }
 
-/** Page hero used across all inner pages. */
+/** Page hero used across all inner pages. Exposed grid + drafting annotation. */
 export function PageHero({
   kicker,
   title,
@@ -86,16 +86,19 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <header className="border-b border-border bg-surface">
+    <header className="grid-field border-b border-border bg-background">
       <Container>
-        <div className="grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
-          <div className="lg:col-span-8">
-            <Kicker>{kicker}</Kicker>
-            <h1 className="display-lg mt-5">{title}</h1>
+        <div className="flex items-center justify-between border-b border-border py-3">
+          <span className="annotation">{kicker}</span>
+          <span className="folio hidden sm:inline">Baseline 13px / 12 col</span>
+        </div>
+        <div className="grid gap-10 py-14 lg:grid-cols-12 lg:py-20">
+          <div className="lg:col-span-9">
+            <h1 className="display-lg">{title}</h1>
             {lede ? <p className="lede mt-6">{lede}</p> : null}
             {actions ? <div className="mt-9 flex flex-wrap gap-3">{actions}</div> : null}
           </div>
-          {children ? <div className="lg:col-span-4">{children}</div> : null}
+          {children ? <div className="lg:col-span-3">{children}</div> : null}
         </div>
       </Container>
     </header>
@@ -103,7 +106,7 @@ export function PageHero({
 }
 
 const btnBase =
-  "inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition-all duration-200";
+  "inline-flex min-h-12 items-center justify-center border px-5 py-3 font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.08em] transition-colors duration-150";
 
 export function CtaLink({
   to,
@@ -125,10 +128,11 @@ export function CtaLink({
       className={cn(
         btnBase,
         variant === "primary" &&
-          "bg-primary text-primary-foreground hover:-translate-y-px hover:bg-foreground/90",
+          "border-fuchsia-brand bg-fuchsia-brand text-white hover:border-ink hover:bg-ink",
         variant === "outline" &&
-          "border border-border-strong bg-background text-foreground hover:bg-secondary",
-        variant === "ink" && "bg-ink-foreground text-ink hover:opacity-90",
+          "border-border-strong bg-transparent text-foreground hover:bg-ink hover:text-ink-foreground",
+        variant === "ink" &&
+          "border-ink-foreground bg-ink-foreground text-ink hover:border-fuchsia-brand hover:bg-fuchsia-brand hover:text-white",
         className,
       )}
     >
@@ -136,6 +140,7 @@ export function CtaLink({
     </Link>
   );
 }
+
 
 export function ArrowLink({
   to,
@@ -197,8 +202,8 @@ export function Panel({
   return (
     <div
       className={cn(
-        "rounded-xl border border-border p-6 transition-colors duration-200 sm:p-8",
-        tone === "surface" ? "bg-surface" : "bg-card",
+        "reg-marks border border-border p-6 transition-colors duration-150 sm:p-8",
+        tone === "surface" ? "bg-surface" : "bg-transparent",
         className,
       )}
     >
@@ -207,15 +212,59 @@ export function Panel({
   );
 }
 
+/**
+ * One dominant stat or claim per visual element — never two ideas in one block.
+ * Cobalt is reserved for data.
+ */
+export function StatBlock({
+  label,
+  value,
+  proof,
+  className,
+}: {
+  label: string;
+  value: ReactNode;
+  proof?: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "reg-marks grid min-h-[16rem] content-between gap-6 border border-border p-6 sm:p-8",
+        className,
+      )}
+    >
+      <p className="annotation">{label}</p>
+      <p className="num-xl data-value">{value}</p>
+      {proof ? (
+        <p className="max-w-[46ch] font-mono text-xs leading-relaxed text-muted-foreground">
+          {proof}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+/** Drafting dimension line with mono annotation. */
+export function DimensionNote({ children }: { children: ReactNode }) {
+  return (
+    <div className="w-full">
+      <span className="dim-line" aria-hidden />
+      <p className="annotation mt-2">{children}</p>
+    </div>
+  );
+}
+
 /** Explicit placeholder for content awaiting approval. Never invent data. */
 export function PendingNote({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-dashed border-border-strong bg-surface px-5 py-4">
-      <p className="kicker mb-2">Pending approved content</p>
+    <div className="border border-dashed border-border-strong bg-surface px-5 py-4">
+      <p className="annotation mb-2">Pending approved content</p>
       <p className="text-sm leading-relaxed text-muted-foreground">{children}</p>
     </div>
   );
 }
+
 
 export function Faqs({ items }: { items: { q: string; a: ReactNode }[] }) {
   return (
