@@ -202,8 +202,8 @@ export function Panel({
   return (
     <div
       className={cn(
-        "rounded-xl border border-border p-6 transition-colors duration-200 sm:p-8",
-        tone === "surface" ? "bg-surface" : "bg-card",
+        "reg-marks border border-border p-6 transition-colors duration-150 sm:p-8",
+        tone === "surface" ? "bg-surface" : "bg-transparent",
         className,
       )}
     >
@@ -212,15 +212,59 @@ export function Panel({
   );
 }
 
+/**
+ * One dominant stat or claim per visual element — never two ideas in one block.
+ * Cobalt is reserved for data.
+ */
+export function StatBlock({
+  label,
+  value,
+  proof,
+  className,
+}: {
+  label: string;
+  value: ReactNode;
+  proof?: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "reg-marks grid min-h-[16rem] content-between gap-6 border border-border p-6 sm:p-8",
+        className,
+      )}
+    >
+      <p className="annotation">{label}</p>
+      <p className="num-xl data-value">{value}</p>
+      {proof ? (
+        <p className="max-w-[46ch] font-mono text-xs leading-relaxed text-muted-foreground">
+          {proof}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+/** Drafting dimension line with mono annotation. */
+export function DimensionNote({ children }: { children: ReactNode }) {
+  return (
+    <div className="w-full">
+      <span className="dim-line" aria-hidden />
+      <p className="annotation mt-2">{children}</p>
+    </div>
+  );
+}
+
 /** Explicit placeholder for content awaiting approval. Never invent data. */
 export function PendingNote({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-dashed border-border-strong bg-surface px-5 py-4">
-      <p className="kicker mb-2">Pending approved content</p>
+    <div className="border border-dashed border-border-strong bg-surface px-5 py-4">
+      <p className="annotation mb-2">Pending approved content</p>
       <p className="text-sm leading-relaxed text-muted-foreground">{children}</p>
     </div>
   );
 }
+
 
 export function Faqs({ items }: { items: { q: string; a: ReactNode }[] }) {
   return (
